@@ -15,7 +15,7 @@
 
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
-| member1      |               |                 |
+| member1      |jwarren3@mail.sfsu.edu|jowarren137|
 | member2      |               |                 |
 | member3      |               |                 |
 | member4      |               |                 |
