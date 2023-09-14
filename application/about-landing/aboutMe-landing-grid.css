@@ -46,7 +46,9 @@ a {
 
 }
 
-.card:nth-child(1) {
+
+.special.card:nth-child(1) {
+  background-image: url(../../Milestones/M0/aboutMe-landing-img/group.png);
   grid-area: z;
   animation-delay: calc(1 * var(--stagger-delay));
 }
