@@ -7,7 +7,7 @@ app.use(express.static('application')); // Create a 'public' directory for your 
 
 // Define a route to serve your main HTML page
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/about-landing/aboutMe-landing.html');
+    res.sendFile(__dirname + '/application/about-landing/aboutMe-landing.html');
 });
 
 // Start the server
