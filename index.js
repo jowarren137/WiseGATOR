@@ -3,11 +3,11 @@ const app = express();
 const port = 3000;
 
 // Serve static files from a directory (e.g., CSS, images, etc.)
-app.use(express.static('csc648-03-fa23-team06')); // Create a 'public' directory for your static files
+app.use(express.static('application')); // Create a 'public' directory for your static files
 
 // Define a route to serve your main HTML page
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/application/about-landing/aboutMe-landing.html');
+    res.sendFile(__dirname + '/about-landing/aboutMe-landing.html');
 });
 
 // Start the server
