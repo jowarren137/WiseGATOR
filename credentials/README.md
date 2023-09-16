@@ -7,16 +7,16 @@
 
 # Below is a list of items required. Missing items will causes points to be deducted from multiple milestone submissions.
 
-1. ec2-18-218-56-180.us-east-2.compute.amazonaws.com
-2. ubuntu
-3. GatorsTeam6!
+1. Server URL: http://ec2-52-14-210-13.us-east-2.compute.amazonaws.com:3000/
+2. SSH Username: ubuntu
+3. SSH Password: GatorsTeam6!
     <br> If a ssh key is used please upload the key to the credentials folder.
-4. Database URL or IP and port used.
+4. Database URL and port: gatordb.ckz0o6p7rp5j.us-east-2.rds.amazonaws.com port 3306
     <br><strong> NOTE THIS DOES NOT MEAN YOUR DATABASE NEEDS A PUBLIC FACING PORT.</strong> But knowing the IP and port number will help with SSH tunneling into the database. The default port is more than sufficient for this class.
-5. Database username
-6. Database password
-7. Database name (basically the name that contains all your tables)
-8. Instructions on how to use the above information.
+5. Database username: GatorTeam6
+6. Database password: GatorBytes6!
+7. Database name (basically the name that contains all your tables): gatordb
+8. Instructions on how to use the above information: The server URL or IP can be used in a browser to navigate to our application's website. The SSH username allows you to connect to our server in any terminal and you enter the SSH password to gain access. Our database URL can be accessed by our IAM users but the admin username and password is provided. The credentials allow you to view and configure our database.
 
 # Most important things to Remember
 ## These values need to kept update to date throughout the semester. <br>
