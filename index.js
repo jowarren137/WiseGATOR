@@ -6,13 +6,8 @@ const port = 3000;
 app.use(express.static('application')); // Create a 'public' directory for your static files
 
 // Define a route to serve your main HTML page
-app.get('/', (req, res) => {
+app.get('/', function (req, res) {
     res.sendFile(__dirname + '/application/about-landing/aboutMe-landing.html');
-});
-
-app.get('/karl-request/', (req,res) => {
-    res.sendFile(__dirname + '/about-pages/test.html')
-
 });
 
 // Start the server
