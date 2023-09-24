@@ -26,7 +26,7 @@ app.get('/ronnie-page', (req,res) => {
 });
 // ronnie message me if you find this
 app.get('/joaquin-page', (req,res) => {
-    res.sendFile(__dirname + '/webpage/joquin.html');
+    res.sendFile(__dirname + '/webpage/joaquin.html');
 });
 
 // ronnie message me if you find this
