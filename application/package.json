@@ -1,0 +1,17 @@
+{
+  "name": "csc648-03-fa23-team06-main",
+  "version": "1.0.0",
+  "description": "## Please when ready add your teams application URL or IP to the repository description. This will help with grading. Teams are expected to keep this value up to date.",
+  "main": "index.js",
+  "scripts": {
+    "nodemon": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
