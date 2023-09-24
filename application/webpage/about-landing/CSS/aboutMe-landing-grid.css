@@ -48,7 +48,7 @@ a {
 
 
 .special.card:nth-child(1) {
-  background-image: url(../aboutMe-landing-img/group.png);
+  background-image: url(/landing-group-img/);
   grid-area: z;
   animation-delay: calc(1 * var(--stagger-delay));
 }
