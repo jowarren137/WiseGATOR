@@ -17,3 +17,49 @@ app.listen(port, () => {
 
 //app.get('/', (req, res) => {res.send('HEY!')})
 
+//Routes are going to get cluttered if we decide to leave them all in here so in 
+// the future we will have to separate the routes into their own JS files but for now its ok like 
+// this
+
+app.get('/ronnie-page', (req,res) => {
+    res.sendFile(__dirname + '/webpage/ronnie.html');
+});
+// ronnie message me if you find this
+app.get('/joaquin-page', (req,res) => {
+    res.sendFile(__dirname + '/webpage/joquin.html');
+});
+
+// ronnie message me if you find this
+app.get('/karl-page', (req,res) => {
+    res.sendFile(__dirname + '/webpage/karl.html');
+});
+
+// ronnie message me if you find this
+app.get('/sean-page', (req,res) => {
+    res.sendFile(__dirname + '/webpage/sean.html');
+});
+
+// ronnie message me if you find this
+app.get('/philip-page', (req,res) => {
+    res.sendFile(__dirname + '/webpage/philip.html');
+});
+
+// ronnie message me if you find this
+app.get('/darien-page', (req,res) => {
+    res.sendFile(__dirname + '/webpage/darien.html');
+});
+
+// ronnie message me if you find this
+app.get('/ronnie-page', (req,res) => {
+    res.sendFile(__dirname + '/webpage/ronnie.html');
+});
+
+
+
+
+
+
+
+
+
+
