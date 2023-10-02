@@ -57,18 +57,19 @@ app.get('/ronnie-page', (req,res) => {
 
 //CSS routes
 
-app.get('/landing-base-css/', (req,res) => {
-    res.sendFile(__dirname + '/webpage/about-landing/CSS/aboutMe-landing-base.css');
-});
-app.get('/landing-grid-css/', (req,res) => {
-    res.sendFile(__dirname + '/webpage/about-landing/CSS/aboutMe-landing-grid.css');
-});
-app.get('/landing-group-img/', (req,res) => {
-    res.sendFile(__dirname + '/webpage/about-landing/aboutMe-landing-img/group.png');
-});
+//app.get('/landing-base-css/', (req,res) => {
+//    res.sendFile(__dirname + '/webpage/about-landing/CSS/aboutMe-landing-base.css');
+//});
+//app.get('/landing-grid-css/', (req,res) => {
+//    res.sendFile(__dirname + '/webpage/about-landing/CSS/aboutMe-landing-grid.css');
+//});
 
 
 //IMG routes
+
+app.get('/landing-group-img/', (req,res) => {
+    res.sendFile(__dirname + '/webpage/about-landing/aboutMe-landing-img/group.png');
+});
 
 app.get('/ronnie-about-img/', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/abt-imgs/ronnieAbt.jpg');
