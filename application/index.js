@@ -24,46 +24,30 @@ app.listen(port, () => {
 app.get('/ronnie-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/ronnie.html');
 });
-// ronnie message me if you find this
+
 app.get('/joaquin-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/joaquin.html');
 });
 
-// ronnie message me if you find this
 app.get('/karl-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/karl.html');
 });
 
-// ronnie message me if you find this
 app.get('/sean-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/sean.html');
 });
 
-// ronnie message me if you find this
 app.get('/philip-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/philip.html');
 });
 
-// ronnie message me if you find this
 app.get('/darien-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/darien.html');
 });
 
-// ronnie message me if you find this
 app.get('/ronnie-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/ronnie.html');
 });
-
-
-//CSS routes
-
-//app.get('/landing-base-css/', (req,res) => {
-//    res.sendFile(__dirname + '/webpage/about-landing/CSS/aboutMe-landing-base.css');
-//});
-//app.get('/landing-grid-css/', (req,res) => {
-//    res.sendFile(__dirname + '/webpage/about-landing/CSS/aboutMe-landing-grid.css');
-//});
-
 
 //IMG routes
 
@@ -87,9 +71,3 @@ app.get('/darien-about-img/', (req,res) => {
 app.get('/default-about-img/', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/abt-imgs/defaultAbt.jpg');
 });
-
-
-
-
-
-
