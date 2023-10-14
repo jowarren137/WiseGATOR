@@ -7,7 +7,7 @@ app.use(express.static('webpage')); // Create a 'public' directory for your stat
 
 // Define a route to serve your main HTML page
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/webpage/about-landing/aboutMe-landing.html');
+    res.sendFile(__dirname + '/webpage/home/home.html');
 });
 
 // Start the server
@@ -70,4 +70,17 @@ app.get('/darien-about-img/', (req,res) => {
 });
 app.get('/default-about-img/', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/abt-imgs/defaultAbt.jpg');
+});
+
+
+// HOME NAVBAR LINKS
+
+app.get('/home-page/', function (req, res) {
+    res.sendFile(__dirname + '/webpage/home/home.html');
+});
+app.get('/about-us/', function (req, res) {
+    res.sendFile(__dirname + '/webpage/about-landing/aboutMe-landing.html');
+});
+app.get('/search-tutors/', function (req, res) {
+    res.sendFile(__dirname + '/webpage/search-tutors/search-tutors.html');
 });
