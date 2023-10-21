@@ -31,10 +31,10 @@ db.query('SELECT * FROM tutors', (err, result) => {
 
 router.post('/search', async function(req, res, next){
     
-    var{username,email,password} = req.body;
     try{
-	 var [results, _] = await db.execute(`select * from tutors`);
-	return results;
+	 var [myResults, _] = await db.execute(`select * from tutors`);
+	return myResults;
+	console.log(myResults);
 	}catch(err){
 		next(err);
 	}
