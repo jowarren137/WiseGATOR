@@ -31,23 +31,23 @@ searchInput.addEventListener("input", e => {
 //BUT IDK 
 // 
 
-//fetch(`/tutors-router/`)
-//  .then(res => res.json())
-//  .then(data => {
-//    users = data.map(user => {
-//      const card = userCardTemplate.content.cloneNode(true).children[0]
-//      const header = card.querySelector("[data-header]")
-//      const body = card.querySelector("[data-body]")
-//      header.textContent = user.name
-//      body.textContent = user.topic
-//      userCardContainer.append(card)
-//      return { name: user.name, email: user.topic, element: card }
- //   })
-//  })
+fetch("/tutor-db")
+ .then(res => res.json())
+ .then(data => {
+   users = data.map(user => {
+     const card = userCardTemplate.content.cloneNode(true).children[0]
+     const header = card.querySelector("[data-header]")
+     const body = card.querySelector("[data-body]")
+     header.textContent = user.name
+     body.textContent = user.topic
+     userCardContainer.append(card)
+     return { name: user.name, email: user.topic, element: card }
+   })
+ })
 
 
-//db.query('SELECT * from tutors', (err, result) => {
-  //console.log(result);
-  //});
+db.query('SELECT * from tutors', (err, result) => {
+  console.log(result);
+  });
 
-//module.exports = router;
+module.exports = router;

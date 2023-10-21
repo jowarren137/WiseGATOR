@@ -2,6 +2,26 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const mysql = require('mysql');
+
+const db  = mysql.createConnection({
+  host: '127.0.0.1',
+  user: 'root',
+  port: '3307',
+  password: '1234',
+  database: 'gatorDB',
+  queueLimit: 0,
+  waitForConnections: true
+});
+db.connect((err) => {
+  if (err)
+      {
+        console.log('Error connecting to database!');
+        throw err;
+        }
+         console.log('Connected to database!');
+});
+
 // Serve static files from a directory (e.g., CSS, images, etc.)
 app.use(express.static('webpage')); // Create a 'public' directory for your static files
 
@@ -79,9 +99,16 @@ app.get('/search-tutors/', function (req, res) {
 
 // Database calls
 
-const tutorRouter = require('./routes/tutors-route');
+// const tutorRouter = require('./routes/tutors-route');
 
-app.use('/tutors-router/', tutorRouter);
+// app.use('/tutors-router/', tutorRouter);
+
+
+app.get('/tutor-db', function (req,res){
+    db.query('SELECT * FROM tutors', (err, result) => {
+        res.json(result);
+        });
+})
 
 module.exports = app;
 

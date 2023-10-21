@@ -2,9 +2,10 @@
 const mysql = require('mysql');
 
 const db  = mysql.createConnection({
-  host: 'localhost',
+  host: '127.0.0.1',
   user: 'root',
-  password: 'GatorsTeam6!',
+  port: '3307',
+  password: '1234',
   database: 'gatorDB',
   queueLimit: 0,
   waitForConnections: true

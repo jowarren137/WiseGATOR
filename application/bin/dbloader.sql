@@ -20,7 +20,7 @@ USE gatorDB;
 	(123456789, 'Joaquin Warren', 'BUS'),
 	(234567891, 'Ronnie Huang', 'ASTR'),
 	(345678912, 'Karl Moreno', 'DM'),
-	(456789123, 'Darien Banuelos', 'ARTH')
-	(567891234), 'Sean Ryan', 'CSC')
-	(678912345), 'Joe Schmuck', 'MATH')
+	(456789123, 'Darien Banuelos', 'ARTH'),
+	(567891234), 'Sean Ryan', 'CSC'),
+	(678912345), 'Joe Schmuck', 'MATH'),
 	(789123456), 'John Doe', 'CSC'); 
