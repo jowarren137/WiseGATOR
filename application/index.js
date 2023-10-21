@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-//const searchTutorsRouter = require("./webpage/search-tutors/search-tutors.js");
-const db = require('./conf/database.js');
 
 // Serve static files from a directory (e.g., CSS, images, etc.)
 app.use(express.static('webpage')); // Create a 'public' directory for your static files
@@ -17,15 +15,7 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-//Use EJS maybe handlebars in the future
-//app.set('view engine', 'ejs');
-
-
-//app.get('/', (req, res) => {res.send('HEY!')})
-
-//Routes are going to get cluttered if we decide to leave them all in here so in 
-// the future we will have to separate the routes into their own JS files but for now its ok like 
-// this
+//Routes
 
 app.get('/ronnie-page', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/ronnie.html');
@@ -88,19 +78,10 @@ app.get('/search-tutors/', function (req, res) {
 });
 
 // Database calls
-const searchTutorsRouter = require('./routes/db-route');
 
-app.use('/api/search-tutors/', searchTutorsRouter);
+const tutorRouter = require('./routes/tutors-route');
 
-
-
-//app.get('/search-tutors', function (req, res) {
-//    res.sendFile(__dirname + '/vwebpage/search-tutors/search-tutors.html');
-//});
-
-//route middleware from search-tutors.js
-// Use the search-tutors route when the user accesses /search-tutors
-//app.use('/search-tutors', searchTutorsRouter);
+app.use('/tutors-router/', tutorRouter);
 
 module.exports = app;
 
