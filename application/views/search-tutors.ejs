@@ -17,8 +17,16 @@
     <title>Tutor Search</title>
 </head>
 <body>
-    <form action="/" method="GET">
-        <input type="text" name="name" placeholder="Search by name">
+        <!--THIS IS SIMPLE NAVBAR-->
+    <ul>
+        <li><a href="/home-page/">Home</a></li>
+        <li><a href="/about-us/">About Us</a></li>
+        <li><a href="/search-tutors/">Search Tutors</a></li>
+        <li style="float:right"><a class="active" href="#sign-in">Sign In</a></li>
+    </ul>
+
+    <form action="/search-tutors" method="GET">
+        <input type="text" name="search" placeholder="Search by name">
         
         <select name="subject">
             <option value="">Select Topic</option>
@@ -32,7 +40,10 @@
 
     <ul>
         <% tutors.forEach(tutor => { %>
-            <li><%= tutor.name %> - Subject ID: <%= tutor.subject_id %></li>
+            <li>
+                <img src="../tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" width="50">
+                <%= tutor.name %> - Subject ID: <%= tutor.subject_id %>
+            </li>
         <% }); %>
     </ul>
 </body>

@@ -45,3 +45,5 @@ CREATE TABLE `tutors` (
 	(6, 'Sean Ryan', 'CSC'),
 	(7, 'Joe Schmuck', 'MATH'),
 	(8, 'John Doe', 'CSC'); 
+
+  UPDATE tutor SET picture = CONCAT('tutor_', id) WHERE id BETWEEN 1 AND 8;

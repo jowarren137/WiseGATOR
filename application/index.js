@@ -21,10 +21,6 @@ db.connect((err) => {
          console.log('Connected to database!');
 });
 
-// db.query('SELECT * FROM tutors', (err, result) => {
-// console.log(result)
-//     })
-
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 // Body parser middleware
@@ -108,23 +104,23 @@ app.get('/about-us/', function (req, res) {
 app.get('/search-tutors/', (req, res) => {
     let sql = 'SELECT * FROM tutors';
     let queryData = [];
-    // console.log(req.query.name)
-    // if (req.query.name || req.query.subject_id) {
-    //     sql += ' WHERE';
+    
+    if (req.query.search || req.query.subject) {
+        sql += ' WHERE';
 
-    //     if (req.query.name) {
-    //         sql += ' name LIKE ?';
-    //         queryData.push('%' + req.query.name + '%');
-    //     }
+        if (req.query.search) {
+            sql += ' name LIKE ?';
+            queryData.push('%' + req.query.search + '%');
+        }
 
-    //     if (req.query.subject_id) {
-    //         if (req.query.name) {
-    //             sql += ' AND';
-    //         }
-    //         sql += ' subject_id = ?';
-    //         queryData.push(req.query.subject_id);
-    //     }
-    // }
+        if (req.query.subject) {
+            if (req.query.search) {
+                sql += ' AND';
+            }
+            sql += ' subject_id = ?';
+            queryData.push(req.query.subject);
+        }
+    }
     db.query('SELECT * FROM topics', (err, subjects) => {
         if (err) throw err;
 
