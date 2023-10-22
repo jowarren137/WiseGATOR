@@ -1,17 +1,16 @@
+const { Console } = require('console');
 const express = require('express');
 const app = express();
 const port = 3000;
-
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 const db  = mysql.createConnection({
-  host: '127.0.0.1',
+  host: 'localhost',
   user: 'root',
-  port: '3307',
-  password: '1234',
-  database: 'gatorDB',
-  queueLimit: 0,
-  waitForConnections: true
+  port: '3306',
+  password: '',
+  database: 'gatorDB'
 });
 db.connect((err) => {
   if (err)
@@ -21,6 +20,17 @@ db.connect((err) => {
         }
          console.log('Connected to database!');
 });
+
+// db.query('SELECT * FROM tutors', (err, result) => {
+// console.log(result)
+//     })
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+// Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 // Serve static files from a directory (e.g., CSS, images, etc.)
 app.use(express.static('webpage')); // Create a 'public' directory for your static files
@@ -93,24 +103,36 @@ app.get('/home-page/', function (req, res) {
 app.get('/about-us/', function (req, res) {
     res.sendFile(__dirname + '/webpage/about-landing/aboutMe-landing.html');
 });
-app.get('/search-tutors/', function (req, res) {
-    res.sendFile(__dirname + '/webpage/search-tutors/search-tutors.html');
+
+// Route to display tutors and handle search
+app.get('/search-tutors/', (req, res) => {
+    let sql = 'SELECT * FROM tutors';
+    let queryData = [];
+    // console.log(req.query.name)
+    // if (req.query.name || req.query.subject_id) {
+    //     sql += ' WHERE';
+
+    //     if (req.query.name) {
+    //         sql += ' name LIKE ?';
+    //         queryData.push('%' + req.query.name + '%');
+    //     }
+
+    //     if (req.query.subject_id) {
+    //         if (req.query.name) {
+    //             sql += ' AND';
+    //         }
+    //         sql += ' subject_id = ?';
+    //         queryData.push(req.query.subject_id);
+    //     }
+    // }
+    db.query('SELECT * FROM topics', (err, subjects) => {
+        if (err) throw err;
+
+    db.query(sql, queryData, (err, results) => {
+        if (err) throw err;
+        res.render(__dirname + '/views/search-tutors.ejs', { tutors: results, topics: subjects });
+    });
+});
 });
 
-// Database calls
-
-// const tutorRouter = require('./routes/tutors-route');
-
-// app.use('/tutors-router/', tutorRouter);
-
-
-app.get('/tutor-db', function (req,res){
-    db.query('SELECT * FROM tutors', (err, result) => {
-        res.json(result);
-        });
-})
-
 module.exports = app;
-
-
-

@@ -17,16 +17,21 @@
     <li style="float:right"><a class="active" href="#sign-in">Sign In</a></li>
   </ul>
   
-  <div class="search-wrapper">
-    <label for="search">Search Users</label>
-    <input type="search" id="search" data-search>
-  </div>
-  <div class="user-cards" data-user-cards-container></div>
-  <template data-user-template>
-    <div class="card">
-      <div class="header" data-header></div>
-      <div class="body" data-body></div>
-    </div>
+  <h1>Search for Tutors</h1>
+    <form action="/search-tutors" method="get">
+        <input type="text" name="query" placeholder="Enter tutor name or topic">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        <% if(tutors && tutors.length > 0) { %>
+            <% tutors.forEach(function(tutor) { %>
+                <li><%= tutor.name %> - <%= tutor.topic %></li>
+            <% }); %>
+        <% } else { %>
+            <li>No tutors found</li>
+        <% } %>
+    </ul>
   </template>
 </body>
 </html>

@@ -1,38 +1,39 @@
-<!-- views/search.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Tutors</title>
+    <style>
+        body {
+            background-color: DimGrey;
+            color: white; /* Apply white color to the text */
+        }
+
+        input, select, button {
+            color: black; /* Text color */
+            background-color: white; /* Background color */
+        }
+    </style>
+    <title>Tutor Search</title>
 </head>
 <body>
-    <!--THIS IS SIMPLE NAVBAR-->
-<ul>
-    <li><a href="/home-page/">Home</a></li>
-    <li><a href="/about-us/">About Us</a></li>
-    <li><a href="/search-tutors/">Search Tutors</a></li>
-    <li style="float:right"><a class="active" href="#sign-in">Sign In</a></li>
-  </ul>
+    <form action="/" method="GET">
+        <input type="text" name="name" placeholder="Search by name">
+        
+        <select name="subject">
+            <option value="">Select Topic</option>
+            <% topics.forEach(topic => { %>
+                <option value="<%= topic.subject %>"><%= topic.subject %></option>
+            <% }); %>
+        </select>
 
-<body>
-    <h1>Search for Tutors</h1>
-    <form action="/search-tutors" method="get">
-        <input type="text" name="query" placeholder="Enter tutor name or topic">
         <button type="submit">Search</button>
     </form>
 
     <ul>
-        <% if(tutors && tutors.length > 0) { %>
-            <% tutors.forEach(function(tutor) { %>
-                <li><%= tutor.name %> - <%= tutor.topic %></li>
-            <% }); %>
-        <% } else { %>
-            <li>No tutors found</li>
-        <% } %>
+        <% tutors.forEach(tutor => { %>
+            <li><%= tutor.name %> - Subject ID: <%= tutor.subject_id %></li>
+        <% }); %>
     </ul>
 </body>
-
 </html>
-
