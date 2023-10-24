@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <form id="loginForm" method="POST" action="/login.php">
+        <h1>Login</h1>
+
+        <p>
+            <label for="email">SFSU Email</label> <br>
+            <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu" required> 
+        </p>
+
+        <p>
+            <label for="password">Enter Password</label> <br>
+            <input type="password" id="password" placeholder="Password" required> 
+        </p>
+
+        <p><a href="">Forgot password? </a></p> <!--Dummy link, no reroute here-->
+        <p><a href="">Don't have an account?</a></p> <!--TO DO: add link to register page-->
+    
+        <button type="submit" id="loginSubmitButton"> Log In </button>
+    </form>
+</body>
+</html>
+<!---TO DO: ADD CSS-->
