@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Login Form</title>
+    <script src="login-form.js" defer></script>
+</head>
+
+<body>
+    <form id="login-form" method="post" >
+        <h1>Login</h1>
+
+        <label for="email">SFSU Email</label> <br>
+        <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu"> <br><br>
+
+        <label for="password">Enter Password</label> <br>
+        <input type="password" id="password" placeholder="Password"> <br><br>
+
+        <p><a href="">Forgot password? </a></p> <!--Dummy link, no reroute here-->
+        <p><a href="/register-form/">Don't have an account?</a></p> <!--TO DO: add link to register page-->
+    
+        <input type="submit" value="Login"> <br><br>
+
+        <!-- Temp Error Handling (if individual messages wrap input and labe in div 'input-control')-->
+        <div class ="input-control">
+            <div class="error" id="error"></div>
+        </div>
+    </form>
+</body>
+</html>
+<!---TO DO: ADD CSS-->

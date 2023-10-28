@@ -1,49 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Tutor Application Form</title>
+    <script src="tutor-application.js" defer></script>
+</head>
+
 <body>
+  <form id="tutor-application" method="post">
+    <h1>Become A Tutor!</h1>
 
-<h1>Become A Tutor!</h1>
-<form action="/register.php">
+    <p><label for="firstname">First Name*</label>
+    <input type="text" id="firstname" name="firstname"></p>
 
-  <p><label for="firstname">First Name*</label>
-  <input type="text" id="firstname" name="firstname" required></p>
-  
-  <p><label for="lastname">Last Name*</label>
-  <input type="text" id="lastname" name="lastname" required></p>
-  
-  <p><label for="type">Select Topic*</label>
-  <select multiple="multiple">
+    <p><label for="lastname">Last Name*</label>
+    <input type="text" id="lastname" name="lastname"></p>
+
+    <p><label for="type">Select Topic*</label>
+    <select id="topic" multiple="multiple">
+      <option value="" selected>Select...</option>
       <option value="ENG">English</option>
       <option value="MAT">Math</option>
       <option value="SCI">Science</option>
-    <option value="SOC">Social Studies</option>
-    <option value="COM">Computer Science</option> <!---TO DO: Get these from database-->
-    <option value="PYC">Psychology</option>
-    <option value="VGS">Video Game Studies</option>
-    <option value="ETH">Ethnic Studies</option>
-    <option value="UMO">Ur mom</option>
-  </select>Submit Seperate form for tutoring a different class</p>
-  
-  
-  <p><label for="description">Description*</label>
-  <textarea type="text" id="description" name="description" rows="4" cols="50" required></textarea>
-  
-  <p><label for="video">Add a Video (accepts MP4 or M4V)*</label>
-  <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*" required></p>
-  
-  <p><label for="photo">Add a Photo*</label>
-  <input type="file" id="photo" name="photo" accept="image/*" required></p>
-  
-  <p><label for="cv">Add a CV (accepts PDF)*</label>
-  <input type="file" id="cv" name="cv" accept="application/pdf" required></p>
-  
-  <p>&nbsp;</p>
-  
-  <p>It may take up to 24 hours to process your registration</p>
-  <button type="reset">Clear</button>&nbsp;<button type="submit">Register</button>
-  
-</form>
+      <option value="SOC">Social Studies</option>
+      <option value="COM">Computer Science</option> <!---TO DO: Get these from database-->
+      <option value="PYC">Psychology</option>
+      <option value="VGS">Video Game Studies</option>
+      <option value="ETH">Ethnic Studies</option>
+      <option value="UMO">Ur mom</option>
+    </select>Submit Seperate form for tutoring a different class</p>
 
+    <p><label for="description">Description*</label>
+    <textarea type="text" id="description" name="description" rows="4" cols="50" ></textarea>
+
+    <p><label for="video">Add a Video (accepts MP4 or M4V)</label>
+    <input type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*" ></p>
+
+    <p><label for="photo">Add a Photo</label>
+    <input type="file" id="photo" name="photo" accept="image/*" ></p>
+
+    <p><label for="cv">Add a CV (accepts PDF)</label>
+    <input type="file" id="cv" name="cv" accept="application/pdf" ></p>
+
+    <p>&nbsp;</p>
+
+    <p>It may take up to 24 hours to process your registration</p>
+    <button type="reset">Clear</button>&nbsp;<input type="submit" value="Register"> <br><br>
+
+    <!-- Temp Error Handling (if individual messages wrap input and labe in div 'input-control')-->
+    <div class ="input-control">
+      <div class="error" id="error"></div>
+    </div>
+  </form>
 </body>
 </html>
 <!---TO DO: ADD CSS-->
