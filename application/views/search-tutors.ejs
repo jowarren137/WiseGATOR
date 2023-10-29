@@ -26,12 +26,12 @@
     </ul>
 
     <form action="/search-tutors" method="GET">
-        <input type="text" name="search" placeholder="Search by name">
+    <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name">
         
         <select name="subject">
             <option value="">Select Topic</option>
             <% topics.forEach(topic => { %>
-                <option value="<%= topic.subject %>"><%= topic.subject %></option>
+                <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
             <% }); %>
         </select>
 

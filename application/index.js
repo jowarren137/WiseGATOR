@@ -126,7 +126,8 @@ app.get('/search-tutors/', (req, res) => {
 
     db.query(sql, queryData, (err, results) => {
         if (err) throw err;
-        res.render(__dirname + '/views/search-tutors.ejs', { tutors: results, topics: subjects });
+        res.render(__dirname + '/views/search-tutors.ejs', { tutors: results, topics: subjects, name: req.query.search,
+            subject: req.query.subject });
     });
 });
 });
