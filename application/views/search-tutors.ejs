@@ -17,21 +17,21 @@
     <title>Tutor Search</title>
 </head>
 <body>
-        <!--THIS IS SIMPLE NAVBAR-->
-    <ul>
-        <li><a href="/home-page/">Home</a></li>
-        <li><a href="/about-us/">About Us</a></li>
-        <li><a href="/search-tutors/">Search Tutors</a></li>
-        <li style="float:right"><a class="active" href="#sign-in">Sign In</a></li>
-    </ul>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about-us/">About Us</a>
+        <a href="/search-tutors/">Search Tutors</a>
+        <a href="/tutor-application/">Become a Tutor</a>
+        <a href="/login-form/">Sign In</a>
+    </div>
 
     <form action="/search-tutors" method="GET">
-        <input type="text" name="search" placeholder="Search by name">
+    <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
         
         <select name="subject">
             <option value="">Select Topic</option>
             <% topics.forEach(topic => { %>
-                <option value="<%= topic.subject %>"><%= topic.subject %></option>
+                <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
             <% }); %>
         </select>
 

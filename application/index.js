@@ -4,22 +4,7 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
-
-const db  = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  port: '3306',
-  password: '',
-  database: 'gatorDB'
-});
-db.connect((err) => {
-  if (err)
-      {
-        console.log('Error connecting to database!');
-        throw err;
-        }
-         console.log('Connected to database!');
-});
+const db = require('./conf/database.js');
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -33,7 +18,7 @@ app.use(express.static('webpage')); // Create a 'public' directory for your stat
 
 // Define a route to serve your main HTML page
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/webpage/home/home.html');
+    res.render(__dirname + '/views/homepage.ejs');
 });
 
 // Start the server
@@ -91,21 +76,37 @@ app.get('/default-about-img/', (req,res) => {
 });
 
 
-// HOME NAVBAR LINKS
+// Page routes
 
-app.get('/home-page/', function (req, res) {
-    res.sendFile(__dirname + '/webpage/home/home.html');
-});
+// app.get('/home-page/', function (req, res) {
+//     res.sendFile(__dirname + '/webpage/home/home.html');
+// });
 app.get('/about-us/', function (req, res) {
     res.sendFile(__dirname + '/webpage/about-landing/aboutMe-landing.html');
 });
+app.get('/tutor-application/', function (req, res) {
+    res.sendFile(__dirname + '/webpage/pages/tutor-application.html');
+});
+app.get('/login-form/', function (req, res) {
+    res.sendFile(__dirname + '/webpage/pages/login-form.html');
+});
+app.get('/register-form/', function (req, res) {
+    res.sendFile(__dirname + '/webpage/pages/register-form.html');
+});
+
 
 // Route to display tutors and handle search
 app.get('/search-tutors/', (req, res) => {
     let sql = 'SELECT * FROM tutors';
     let queryData = [];
-    
-    if (req.query.search || req.query.subject) {
+    // var nam = req.query.search
+    // if (req.query.search && req.query.search.includes(';')) {
+    //     nam = 'Semicolons bad'
+    //     return res.redirect('/search-tutors/');
+    // }
+
+
+    if ((req.query.search || req.query.subject)) {
         sql += ' WHERE';
 
         if (req.query.search) {
@@ -126,7 +127,8 @@ app.get('/search-tutors/', (req, res) => {
 
     db.query(sql, queryData, (err, results) => {
         if (err) throw err;
-        res.render(__dirname + '/views/search-tutors.ejs', { tutors: results, topics: subjects });
+        res.render(__dirname + '/views/search-tutors.ejs', { tutors: results, topics: subjects, name: req.query.search,
+            subject: req.query.subject });
     });
 });
 });
