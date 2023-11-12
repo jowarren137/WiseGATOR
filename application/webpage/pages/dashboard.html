@@ -1,0 +1,139 @@
+<!-- THIS IS HTML FOR CSS TEST WORK -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./CSS/dashboard.css">
+    <script src="./JS/login-form.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="left">
+            <img src="../tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+            <a class="title" style="color: rgb(255, 255, 255);">wiseGATOR</a> 
+        </div>
+        <div class="center"> 
+            <div class="search-container">
+                <select>
+                    <option>Topic 1</option>
+                    <option>Topic 2</option>
+                    <option>Topic 3</option>
+                </select>
+                <input type="text" placeholder="Search for Tutors">
+                <button type="submit">GO</button>
+            </div>  
+        </div>
+        <div class="right">
+            <div class="navbar-buttons">
+                <a href="/">Home</a>
+                <a href="/about-us/">About Us</a>
+                <a href="/tutor-application/">Become a Tutor</a>
+                <a href="/login-form/">Sign In</a>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <h1>Dashboard</h1>
+        <div class="welcome-message">
+            <h2>Welcome Back, Joe Smuck!</h2>
+        </div>
+        <div class="dashboard-columns">
+            <div class="incoming-messages">
+                <h3>Incoming Messages</h3>
+                <div class="message-item">
+                    <img src="../tutor-pictures/tutor_1.png" alt="PFP">
+                    <div class="message-details">
+                        <p>Name: Steve Alex</p>     <!-- TO DO: Get information from Database -->
+                        <p>Email: Steve@example.com</p>                              
+                        <p>Message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in urna eget arcu mollis mattis. Vestibulum ante ipsum primis
+                        in faucibus orci luctus et ultrices posuere cubilia Curae; Sed euismod neque id diam malesuada, id sagittis odio feugiat.</p>   
+                    </div>
+                </div>
+
+                <!-- START OF PRESENTATION DISPLAY DIVS FOR INCOMING MESSAGES -->
+                <div class="message-item">
+                    <img src="../tutor-pictures/tutor_2.png" alt="PFP">
+                    <div class="message-details">
+                        <p>Name: Cave Johnson</p>
+                        <p>Email: Cave@example.com</p>                                      
+                        <p>Message: Integer sollicitudin nisl et enim congue, vel congue libero accumsan. Curabitur aliquet justo in posuere sagittis. Fusce
+                        hendrerit felis vitae bibendum venenatis. Vestibulum tincidunt est id mi posuere, nec tempus leo cursus. Duis non risus quis leo feugiat cursus.</p>    
+                    </div>
+                </div>
+                <div class="message-item">
+                    <img src="../tutor-pictures/tutor_3.png" alt="PFP">
+                    <div class="message-details">
+                        <p>Name: Quirrel Tiso</p>
+                        <p>Email: Quirrel@example.com</p>                                      
+                        <p>Message: Suspendisse luctus, elit sit amet convallis fermentum, libero elit aliquam odio, in feugiat ipsum metus id libero. Donec laoreet
+                        nunc non urna cursus, eu tristique ipsum bibendum. Suspendisse potenti.</p>    
+                    </div>
+                </div>
+                <div class="message-item">
+                    <img src="../tutor-pictures/tutor_4.png" alt="PFP">
+                    <div class="message-details">
+                        <p>Name: Lucio Oohs</p>
+                        <p>Email: Lucio@example.com</p>                                      
+                        <p>Message: Proin non urna vel enim aliquam condimentum. Fusce suscipit, arcu et efficitur efficitur, sapien risus cursus odio, sit amet rhoncus
+                        libero metus at nunc. Vestibulum dignissim, ex nec facilisis venenatis, mi libero tincidunt lacus, et volutpat ipsum eros id ligula. Sed euismod
+                        dui quis quam malesuada, a elementum elit consectetur. Curabitur accumsan ipsum vel erat cursus, ac imperdiet tortor eleifend.</p>    
+                    </div>
+                </div>
+                <!-- END OF PRESENTATION DISPLAY DIVS FOR INCOMING MESSAGES -->
+
+            </div>
+            <div class="previously-searched-tutors">
+                <h3>Previously Searched Tutors</h3>
+                <div class="tutor-item">
+                    <img src="../tutor-pictures/tutor_5.png" alt="PFP">
+                    <div class="tutor-details">
+                        <p>Name: Jiraiya Sannin</p>
+                        <p>Email: Jiraiya@example.com</p>
+                        <p>Available Times: Monday, Wednesday, Friday</p>     <!-- TO DO: Get information from Database -->
+                        <p>Classes Teaching: Math</p>
+                        <button class="message-button">Message Tutor</button>
+                    </div>
+                </div>
+
+                <!-- START OF PRESENTATION DISPLAY DIVS FOR PREVIOUSLY SEARCHED TUTORS -->
+                <div class="tutor-item">
+                    <img src="../tutor-pictures/tutor_6.png" alt="PFP">
+                    <div class="tutor-details">
+                        <p>Name: Trafalgar Law</p>
+                        <p>Email: Trafalgar@example.com</p>
+                        <p>Available Times: Tuesday, Thursday</p>     
+                        <p>Classes Teaching: Physics</p>
+                        <button class="message-button">Message Tutor</button>
+                    </div>
+                </div>
+                <div class="tutor-item">
+                    <img src="../tutor-pictures/tutor_7.png" alt="PFP">
+                    <div class="tutor-details">
+                        <p>Name: Edward Elric</p>
+                        <p>Email: Edward@example.com</p>
+                        <p>Available Times: Monday, Tuesday, Wednesday</p>    
+                        <p>Classes Teaching: English</p>
+                        <button class="message-button">Message Tutor</button>
+                    </div>
+                </div>
+                <div class="tutor-item">
+                    <img src="../tutor-pictures/tutor_8.png" alt="PFP">
+                    <div class="tutor-details">
+                        <p>Name: Edward Elric</p>
+                        <p>Email: Edward@example.com</p>
+                        <p>Available Times: Monday, Tuesday, Wednesday</p>    
+                        <p>Classes Teaching: English</p>
+                        <button class="message-button">Message Tutor</button>
+                    </div>
+                </div>
+                <!-- END OF PRESENTATION DISPLAY DIVS FOR PREVIOUSLY SEARCHED TUTORS -->
+
+            </div>
+        </div>
+    </main>
+</body>
+</html>

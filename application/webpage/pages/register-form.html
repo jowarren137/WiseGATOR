@@ -5,39 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Register Form</title>
+    <link rel="stylesheet" href="./CSS/register-form.css">
     <script src=".JS/register-form.js" defer></script>
 </head>
-
 <body>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about-us/">About Us</a>
-        <a href="/search-tutors/">Search Tutors</a>
-        <a href="/tutor-application/">Become a Tutor</a>
-        <a href="/login-form/">Sign In</a>
-    </div>
-    <form id="register-form" method="post">
-        <h1>Register</h1>
-        
-        <label for="email">SFSU Email *</label> <br>
-        <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu"/>  <br><br>
-
-        <label for="password">Password *</label> <br>
-        <input type="password" id="password" placeholder="At least 8 characters"/> <br><br>
-
-        <label for="password-confirm">Re-enter Password *</label> <br>
-        <input type="password" id="password-confirm" placeholder=""/> <br><br>
-        
-        <input type="checkbox" id="checkbox"/>
-        <label for="s">I have read and accept the <a href="#">Terms and Conditions</a> *</label> <br><br>
-
-        <input type="submit" value="submit"/> <br><br>
-
-        <!-- Temp Error Handling (if individual messages wrap input and labe in div 'input-control')-->
-        <div class ="input-control">
-            <div class="error" id="error"></div>
+    <header class="navbar">
+        <div class="left">
+            <img src="../tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+            <a class="title" style="color: rgb(255, 255, 255);">wiseGATOR</a> 
         </div>
-    </form>
+        <div class="center"> 
+            <div class="search-container">
+                <select>
+                    <option>Topic 1</option>
+                    <option>Topic 2</option>
+                    <option>Topic 3</option>
+                </select>
+                <input type="text" placeholder="Search for Tutors">
+                <button type="submit">GO</button>
+            </div>  
+        </div>
+        <div class="right">
+            <div class="navbar-buttons">
+                <a href="/">Home</a>
+                <a href="/about-us/">About Us</a>
+                <a href="/tutor-application/">Become a Tutor</a>
+                <a href="/login-form/">Sign In</a>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <form class="register-form" method="post">
+            <h1>Register</h1>
+            
+            <label for="email">SFSU Email *</label> 
+            <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu"/>  <br>
+
+            <label for="password">Password *</label> 
+            <input type="password" id="password" placeholder="At least 8 characters"/> <br>
+
+            <label for="password-confirm">Re-enter Password *</label> 
+            <input type="password" id="password-confirm" placeholder=""/> <br>
+            
+            <div class="terms">
+                <input type="checkbox" id="checkbox"/>
+                <label for="checkbox">I've read and accept the <a href="#">Terms of Services</a> *</label> <br>
+            </div>
+            
+            <p>Items with an asteriks (*) are required</p>
+
+            <input type="submit" value="submit"/> <br>
+        </form>
+    </main>
+    <!-- Temp Error Handling (if individual messages wrap input and labe in div 'input-control')-->
+    <div class ="input-control">
+        <div class="error" id="error"></div>
+    </div>
 </body>
 </html>
-<!---TO DO: ADD CSS-->
