@@ -38,13 +38,18 @@
         <a class="title" style="color: black;">wiseGATOR</a> <!--Keep this content in this position-->
         <a>
         <!--Move this content to be centered in the navbar-->    
-        <select>
-            <option>Topic 1</option>
-            <option>Topic 2</option> <!-- Get these from the DB -->
-            <option>Topic 3</option>
-        </select>
-        <input type="text" placeholder="Search for Tutors">
-        <button type="submit">GO</button>
+        <form action="/search-tutors" method="GET">
+            <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+                
+                <select name="subject">
+                    <option value="">Select Topic</option>
+                    <% topics.forEach(topic => { %>
+                        <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                    <% }); %>
+                </select>
+        
+                <button type="submit">Search</button>
+            </form>
         </a>
         </a>
         <!--Move this content to be the right side of the navbar-->
