@@ -1,5 +1,3 @@
-<!-- THIS IS HTML FOR CSS TEST WORK -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,32 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="./CSS/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
     <script src="./JS/login-form.js" defer></script>
 </head>
 <body>
     <header class="navbar">
         <div class="left">
-            <img src="../tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-            <a class="title" style="color: rgb(255, 255, 255);">wiseGATOR</a> 
+            <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+            <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
         </div>
-        <div class="center"> 
-            <div class="search-container">
-                <select>
-                    <option>Topic 1</option>
-                    <option>Topic 2</option>
-                    <option>Topic 3</option>
+        <div class="search-container">
+            <form class="search-form" action="/search-tutors" method="GET">
+                <select name="subject">
+                    <option value="">Select Topic</option>
+                    <% topics.forEach(topic => { %>
+                        <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                    <% }); %>
                 </select>
-                <input type="text" placeholder="Search for Tutors">
-                <button type="submit">GO</button>
-            </div>  
-        </div>
+
+                <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+                
+                <button type="submit">Search</button>
+            </form>
+        </div>  
         <div class="right">
             <div class="navbar-buttons">
-                <a href="/">Home</a>
-                <a href="/about-us/">About Us</a>
-                <a href="/tutor-application/">Become a Tutor</a>
-                <a href="/login-form/">Sign In</a>
+                <a href="/"><button>Home</button></a>
+                <a href="/about-us/"><button>About Us</button></a>
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
+                <a href="/tutor-application/"><button>Become a Tutor</button></a>
+                <a href="/login-form/"><button>Sign In</button></a>
             </div>
         </div>
     </header>
@@ -50,7 +52,7 @@
                         <p>Name: Steve Alex</p>     <!-- TO DO: Get information from Database -->
                         <p>Email: Steve@example.com</p>                              
                         <p>Message: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in urna eget arcu mollis mattis. Vestibulum ante ipsum primis
-                        in faucibus orci luctus et ultrices posuere cubilia Curae; Sed euismod neque id diam malesuada, id sagittis odio feugiat.</p>   
+                        in faucibus orci luctus et ultrices posuere cubilia Curae.</p>   
                     </div>
                 </div>
 
@@ -61,7 +63,7 @@
                         <p>Name: Cave Johnson</p>
                         <p>Email: Cave@example.com</p>                                      
                         <p>Message: Integer sollicitudin nisl et enim congue, vel congue libero accumsan. Curabitur aliquet justo in posuere sagittis. Fusce
-                        hendrerit felis vitae bibendum venenatis. Vestibulum tincidunt est id mi posuere, nec tempus leo cursus. Duis non risus quis leo feugiat cursus.</p>    
+                        hendrerit felis vitae bibendum venenatis. Vestibulum tincidunt. </p>    
                     </div>
                 </div>
                 <div class="message-item">
@@ -79,8 +81,7 @@
                         <p>Name: Lucio Oohs</p>
                         <p>Email: Lucio@example.com</p>                                      
                         <p>Message: Proin non urna vel enim aliquam condimentum. Fusce suscipit, arcu et efficitur efficitur, sapien risus cursus odio, sit amet rhoncus
-                        libero metus at nunc. Vestibulum dignissim, ex nec facilisis venenatis, mi libero tincidunt lacus, et volutpat ipsum eros id ligula. Sed euismod
-                        dui quis quam malesuada, a elementum elit consectetur. Curabitur accumsan ipsum vel erat cursus, ac imperdiet tortor eleifend.</p>    
+                        libero metus at nunc. Vestibulum dignissim, ex nec facilisis venenatis.</p>    
                     </div>
                 </div>
                 <!-- END OF PRESENTATION DISPLAY DIVS FOR INCOMING MESSAGES -->
@@ -123,7 +124,7 @@
                 <div class="tutor-item">
                     <img src="../tutor-pictures/tutor_8.png" alt="PFP">
                     <div class="tutor-details">
-                        <p>Name: Edward Elric</p>
+                        <p>Name: Levi Ackerman</p>
                         <p>Email: Edward@example.com</p>
                         <p>Available Times: Monday, Tuesday, Wednesday</p>    
                         <p>Classes Teaching: English</p>
