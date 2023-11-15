@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/aboutMe-landing-base.css"/>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/aboutMe-landing-grid.css"/>
+  </head>
+  <body>
+    
+    <header class="navbar">
+      <div class="left">
+          <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+          <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+      </div>
+      <div class="search-container">
+          <form class="search-form" action="/search-tutors" method="GET">
+              <select name="subject">
+                  <option value="">Select Topic</option>
+                  <% topics.forEach(topic => { %>
+                      <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                  <% }); %>
+              </select>
+
+              <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+              
+              <button type="submit">Search</button>
+          </form>
+      </div>  
+      <div class="right">
+          <div class="navbar-buttons">
+              <a href="/"><button>Home</button></a>
+              <a href="/about-us/"><button>About Us</button></a>
+              <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
+              <a href="/tutor-application/"><button>Become a Tutor</button></a>
+              <a href="/login-form/"><button>Sign In</button></a>
+          </div>
+      </div>
+  </header>
+    
+    <section class="aboutMe-landing-grid">
+      <div class="special card">About Us </div>
+      
+      <a href="/ronnie-page" target="_blank">
+        <div class="card";">
+          Ronnie
+        </div>
+      </a>
+      <a href="/joaquin-page" target="_blank">
+        <div class="card";">
+          Joaquin
+        </div>
+      </a>
+      <a href="/karl-page" target="_blank">
+        <div class="card";">
+          Karl
+        </div>
+      </a>
+      <a href="/sean-page" target="_blank">
+        <div class="card";">
+          Sean
+        </div>
+      </a>
+      <a href="/philip-page" target="_blank">
+        <div class="card";">
+          Philip
+        </div>
+      </a>
+      <a href="/darien-page" target="_blank">
+        <div class="card";">
+          Darien
+        </div>
+      </a>
+    </section>
+
+    <br>
+    <br>
+    <br>
+
+
+    <section>
+        <div>
+            
+        </div>
+
+    </section>
+
+    
+  </body>
+</html>

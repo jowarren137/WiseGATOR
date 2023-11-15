@@ -1,59 +1,71 @@
 <head>
-    <link rel="stylesheet" href="../webpage/home/CSS/home.css">
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/login-form.css"/>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/home.css"/>
+
     <style>
-        body {
-            background-color: #E3CB9C;
-        }
-        .navbar {
-            background-color: rgb(133, 160, 91);
-            padding: 5px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            margin: 0;
-            position: absolute;
-            left: 0%;
-            transform: translate(0%, 0%);
-            width: 100%;
-            padding-left: 5px;
-        }
-        .title {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 24px;
-        }
-        .left {
-            padding-left: 5px;
-        }
-        .right {
-            float: right;
-            padding-left: 5px;
-        }
+       
     </style>
 </head>
+
 <body>
-    <div class="navbar">
-        <img src="../webpage/tutor-pictures/GATORlogo.png" width="90" alt="Logo" class="Logo">
-        <a class="left">
-        <a class="title" style="color: black;">wiseGATOR</a> <!--Keep this content in this position-->
-        <a>
-        <!--Move this content to be centered in the navbar-->    
-        <select>
-            <option>Topic 1</option>
-            <option>Topic 2</option> <!-- Get these from the DB -->
-            <option>Topic 3</option>
-        </select>
-        <input type="text" placeholder="Search for Tutors">
-        <button type="submit">GO</button>
-        </a>
-        </a>
-        <!--Move this content to be the right side of the navbar-->
-        <a class="right">
-        <button a href="/">Home</button>
-        <button href="/about-us/">About Us</button>
-        <!-- button href="/search-tutors/">Search Tutors</button-->
-        <button href="/tutor-application/">Become a Tutor</button>
-        <button href="/login-form/">Sign In</button>
-        </a>
-    </div>
+    <header class="navbar">
+            <div class="left">
+                <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+                <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+            </div>
+            <div class="search-container">
+                <form class="search-form" action="/search-tutors" method="GET">
+                    <select name="subject">
+                        <option value="">Select Topic</option>
+                        <% topics.forEach(topic => { %>
+                            <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                        <% }); %>
+                    </select>
+        
+                    <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+                    
+                    <button type="submit">Search</button>
+                </form>
+            </div>  
+            <div class="right">
+                <div class="navbar-buttons">
+                    <a href="/"><button>Home</button></a>
+                    <a href="/about-us/"><button>About Us</button></a>
+                    <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
+                    <a href="/tutor-application/"><button>Become a Tutor</button></a>
+                    <a href="/login-form/"><button>Sign In</button></a>
+                </div>
+            </div>
+    </header>
+    <div class="main-container">
+        <div class="nested-grid">
+ 
+          <div class="text-button-container">
+  
+              <span id="element" class="typed-cursor"></span>
+              <div class="home-container">
+  
+                  <button class="button find-tutor" onclick="location.href='/search-tutors';">Find a Tutor</button>
+                  <button class="button become-tutor" onclick="location.href='/tutor-application/';">Become a Tutor</button>
+                </div>
+          </div>
+          
+          <div class="additional-info">
+            <h2>Recently Approved Tutors</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+          </div>
+        </div>
+      </div>
+
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+var typed = new Typed('#element', {
+  strings: ['Teaching the Future.', 'Welcome to WiseGATOR'],
+  typeSpeed: 75,
+  showCursor: false, // Ensure the cursor is shown
+  cursorChar: '|', // Default cursor character
+});
+</script>
 </body>

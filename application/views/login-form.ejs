@@ -2,20 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
-    <style>
-        body {
-            background-color: DimGrey;
-            color: white; /* Apply white color to the text */
-        }
-
-        input, select, button {
-            color: black; /* Text color */
-            background-color: white; /* Background color */
-        }
-    </style>
-    <title>Tutor Search</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/login-form.css"/>
+    <!-- <script src="./JS/login-form.js" defer></script> -->
 </head>
 <body>
     <header class="navbar">
@@ -47,31 +38,26 @@
             </div>
         </div>
     </header>
-
+    <main class="content">
+        <form class="login-form" method="post" >
+            <h1>Login</h1>
     
-    <div class="tutor-cards-container">
-        <% tutors.forEach(tutor => { %>
-            <div class="tutor-card">
-                <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="tutor-picture">
-                <div class="tutor-info">
-                    <h3><%= tutor.name %></h3>
-                    <p>Subject ID: <%= tutor.subject_id %></p>
-                </div>
-                <div class="tutor-contact">
-                    <button type="button">Message</button>
-                </div>
-            </div>
-        <% }); %>
+            <label for="email">SFSU Email</label> 
+            <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu"> <br>
+    
+            <label for="password">Enter Password</label> 
+            <input type="password" id="password" placeholder="Password"> <br>
+    
+            <p><a href="">Forgot password? </a></p> <!--Dummy link, no reroute here-->
+            <p><a href="/register-form/">Don't have an account?</a></p> <!--TO DO: add link to register page-->
+        
+            <input type="submit" value="Login"> <br>
+    
+        </form>
+    </main>
+    <!-- Temp Error Handling (if individual messages wrap input and label in div 'input-control')-->
+    <div class ="input-control">
+        <div class="error" id="error"></div>
     </div>
-
-    <!-- <ul>
-        <% tutors.forEach(tutor => { %>
-            <li>
-                <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" width="50">
-                <%= tutor.name %> - Subject ID: <%= tutor.subject_id %>
-            </li>
-        <% }); %>
-    </ul> -->
-
 </body>
 </html>
