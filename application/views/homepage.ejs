@@ -1,6 +1,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
-    <link rel="stylesheet" href="../webpage/home/CSS/home.css">
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/login-form.css"/>
     <style>
         /* body {
             background-color: #E3CB9C;
@@ -33,35 +33,35 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <img src="../webpage/tutor-pictures/GATORlogo.png" width="90" alt="Logo" class="Logo">
-        <a class="left">
-        <a class="title" style="color: black;">wiseGATOR</a> <!--Keep this content in this position-->
-        <a>
-        <!--Move this content to be centered in the navbar-->    
-        <form action="/search-tutors" method="GET">
-            <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
-                
+    <header class="navbar">
+        <div class="left">
+            <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+            <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+        </div>
+        <div class="search-container">
+            <form class="search-form" action="/search-tutors" method="GET">
                 <select name="subject">
                     <option value="">Select Topic</option>
                     <% topics.forEach(topic => { %>
                         <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
                     <% }); %>
                 </select>
-        
+
+                <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+                
                 <button type="submit">Search</button>
             </form>
-        </a>
-        </a>
-        <!--Move this content to be the right side of the navbar-->
-        <a class="right">
-            <a href="/"><button>Home</button></a>
-            <a href="/about-us/"><button>About Us</button></a>
-            <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
-            <a href="/tutor-application/"><button>Become a Tutor</button></a>
-            <a href="/login-form/"><button>Sign In</button></a>
-        </a>
-    </div>
+        </div>  
+        <div class="right">
+            <div class="navbar-buttons">
+                <a href="/"><button>Home</button></a>
+                <a href="/about-us/"><button>About Us</button></a>
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
+                <a href="/tutor-application/"><button>Become a Tutor</button></a>
+                <a href="/login-form/"><button>Sign In</button></a>
+            </div>
+        </div>
+    </header>
     <span id="element"></span>
     <div class="home-container">
 
