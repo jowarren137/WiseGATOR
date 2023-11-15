@@ -23,7 +23,6 @@ body {
     font-family: "Lato", sans-serif;
     background-color: rgb(130, 154, 91);
     padding: 10px 10px;
-    border-bottom: 1px solid black;
 
     display: grid;
     grid-template-columns: auto minmax(auto, 1fr) auto; 
