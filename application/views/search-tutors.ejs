@@ -48,13 +48,30 @@
         </div>
     </header>
 
-    <ul>
+    
+    <div class="tutor-cards-container">
+        <% tutors.forEach(tutor => { %>
+            <div class="tutor-card">
+                <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="tutor-picture">
+                <div class="tutor-info">
+                    <h3><%= tutor.name %></h3>
+                    <p>Subject ID: <%= tutor.subject_id %></p>
+                </div>
+                <div class="tutor-contact">
+                    <button type="button">Message</button>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <!-- <ul>
         <% tutors.forEach(tutor => { %>
             <li>
                 <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" width="50">
                 <%= tutor.name %> - Subject ID: <%= tutor.subject_id %>
             </li>
         <% }); %>
-    </ul>
+    </ul> -->
+
 </body>
 </html>

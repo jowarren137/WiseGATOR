@@ -1,8 +1,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
-    <!-- <link rel="stylesheet" href="../webpage/home/CSS/home.css"> -->
+    <link rel="stylesheet" href="../webpage/home/CSS/home.css">
     <style>
-        body {
+        /* body {
             background-color: #E3CB9C;
         }
         .navbar {
@@ -29,7 +29,7 @@
         .right {
             float: right;
             padding-left: 5px;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -62,4 +62,27 @@
             <a href="/login-form/"><button>Sign In</button></a>
         </a>
     </div>
+    <span id="element"></span>
+    <div class="home-container">
+
+        <button class="button find-tutor">Find a Tutor</button>
+        <button class="button become-tutor">Become a Tutor</button>
+      </div>
+</div>
+
+<div class="additional-info">
+  <h2>Recently Approved Tutors</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+</div>
+</div>
+</div>
+
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+var typed = new Typed('#element', {
+  strings: ['Teaching the Future.', 'Welcome to WiseGATOR'],
+  typeSpeed: 50,
+});
+</script>
 </body>

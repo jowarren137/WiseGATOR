@@ -38,32 +38,78 @@
             </div>
         </div>
     </header>
-    <main class="content">
-        <form class="register-form" method="post">
-            <h1>Register</h1>
-            
-            <label for="email">SFSU Email *</label> 
-            <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu"/>  <br>
-
-            <label for="password">Password *</label> 
-            <input type="password" id="password" placeholder="At least 8 characters"/> <br>
-
-            <label for="password-confirm">Re-enter Password *</label> 
-            <input type="password" id="password-confirm" placeholder=""/> <br>
-            
-            <div class="terms">
-                <input type="checkbox" id="checkbox"/>
-                <label for="checkbox">I've read and accept the <a href="#">Terms of Services</a> *</label> <br>
+    <body>
+        helloworld
+        <div class="navbar">
+            <img
+              src="../webpage/tutor-pictures/GATORlogo.png"
+              width="90"
+              alt="Logo"
+              class="Logo"
+            />
+            <a class="left">
+              <a class="title" style="color: black">wiseGATOR</a>
+              <!--Keep this content in this position-->
+              <a>
+                <!--Move this content to be centered in the navbar-->
+                <select>
+                  <option>Topic 1</option>
+                  <option>Topic 2</option>
+                  <!-- Get these from the DB -->
+                  <option>Topic 3</option>
+                </select>
+                <input type="text" placeholder="Search for Tutors" />
+                <button type="submit">GO</button>
+              </a>
+            </a>
+            <!--Move this content to be the right side of the navbar-->
+            <a class="right">
+              <button a href="/">Home</button>
+              <button href="/about-us/">About Us</button>
+              <!-- button href="/search-tutors/">Search Tutors</button-->
+              <button href="/tutor-application/">Become a Tutor</button>
+              <button href="/login-form/">Sign In</button>
+            </a>
+          </div>
+        <div class="main-container">
+            <div></div>
+            <div class="grid-item">
+                <div class="form-container">
+                    <form>
+                      <h1>Become A Tutor!</h1>
+                      
+                      <label for="first-name">First Name *</label>
+                      <input type="text" id="first-name" name="first_name" required>
+                      
+                      <label for="last-name">Last Name *</label>
+                      <input type="text" id="last-name" name="last_name" required>
+                      
+                      <label for="topic">Select Topic *</label>
+                      <select id="topic" name="topic" required>
+                        <option value="">--Please choose an option--</option>
+                      </select>
+                      
+                      <label for="description">Description *</label>
+                      <textarea id="description" name="description" required></textarea>
+                      
+                      <div class="media-upload">
+                        <button type="button">Add a Video</button>
+                        <button type="button">Add a Photo</button>
+                        <button type="button">Add a CV/Flyer</button>
+                      </div>
+                      
+                      <p>It may take up to 24 hours to process your registration</p>
+                      
+                      <div class="form-actions">
+                        <button type="reset">Clear</button>
+                        <br>
+                        <button type="submit">Register</button>
+                      </div>
+                    </form>
+                  </div>
             </div>
-            
-            <p>Items with an asteriks (*) are required</p>
-
-            <input type="submit" value="submit"/> <br>
-        </form>
-    </main>
-    <!-- Temp Error Handling (if individual messages wrap input and labe in div 'input-control')-->
-    <div class ="input-control">
-        <div class="error" id="error"></div>
-    </div>
-</body>
-</html>
+            <div></div>
+            <!-- Add more grid items if needed -->
+        </div>
+    </body>
+    </html>

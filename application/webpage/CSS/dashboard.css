@@ -229,3 +229,36 @@ body {
 .message-button:hover{
     background-color: #005400;
 }
+
+body {
+    /* background-color: DimGrey; */
+    /* color: white;  */
+}
+
+input, select, button {
+    color: black; /* Text color */
+    background-color: white; /* Background color */
+}
+.tutor-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between cards */
+    }
+
+    .tutor-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto; 
+    gap: 10px;
+    padding: 10px; 
+    border: 2px solid black;
+    }
+
+    .tutor-picture {
+    width: 100px; 
+    border-radius: 50%;
+    }
+
+    .tutor-info h3 {
+    margin: 0;
+    padding: 0;
+    }
