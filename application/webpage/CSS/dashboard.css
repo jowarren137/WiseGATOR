@@ -101,7 +101,7 @@ body {
 }
 
 .search-container input {
-    width: calc(110% - 20px);
+    width: calc(140% - 20px);
     padding: 10px;
     
 }
