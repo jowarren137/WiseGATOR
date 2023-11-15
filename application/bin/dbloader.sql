@@ -47,3 +47,40 @@ CREATE TABLE `tutors` (
 	(8, 'John Doe', 'CSC'); 
 
   UPDATE tutor SET picture = CONCAT('tutor_', id) WHERE id BETWEEN 1 AND 8;
+
+  -- Create the 'users' table
+CREATE TABLE `users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(254) NOT NULL,
+  `password` BINARY(20) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- Create the 'messages' table
+CREATE TABLE `messages` (
+  `TutorID` INT NOT NULL,
+  `SenderID` INT NOT NULL,
+  `TutorPostID` INT NOT NULL,
+  `Date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Message` TEXT NOT NULL,
+  INDEX `fk_TutorID_idx` (`TutorID` ASC) VISIBLE,
+  INDEX `fk_SenderID_idx` (`SenderID` ASC) VISIBLE,
+  CONSTRAINT `fk_TutorID`
+    FOREIGN KEY (`TutorID`)
+    REFERENCES `tutors` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_SenderID`
+    FOREIGN KEY (`SenderID`)
+    REFERENCES `users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+-- Inserting data into 'users' from 'tutors'
+INSERT INTO users (id, name, email, password)
+SELECT id, name, 
+       CONCAT(LOWER(name), '@example.com') AS email, 
+       UNHEX(SHA1('defaultPassword')) AS password
+FROM tutors;
