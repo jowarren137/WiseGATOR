@@ -78,9 +78,7 @@ app.get('/default-about-img/', (req,res) => {
     res.sendFile(__dirname + '/webpage/about-pages/abt-imgs/defaultAbt.jpg');
 });
 
-app.get('/about-us/', function (req, res) {
-    res.sendFile(__dirname + '/webpage/about-pages/aboutMe-landing.html');
-});
+
 // Page routes
 
 // app.get('/home-page/', function (req, res) {

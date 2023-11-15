@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const db = require('../conf/database.js');
 
-
+router.get('/about-us/', (req, res) => {
+    res.render('aboutMe-landing');
+});
 
 // Define a route to serve your main HTML page
 router.get('/', (req, res) => {
