@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
     <style>
         body {
             background-color: DimGrey;
@@ -17,26 +18,35 @@
     <title>Tutor Search</title>
 </head>
 <body>
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about-us/">About Us</a>
-        <a href="/search-tutors/">Search Tutors</a>
-        <a href="/tutor-application/">Become a Tutor</a>
-        <a href="/login-form/">Sign In</a>
-    </div>
+    <header class="navbar">
+        <div class="left">
+            <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+            <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+        </div>
+        <div class="search-container">
+            <form class="search-form" action="/search-tutors" method="GET">
+                <select name="subject">
+                    <option value="">Select Topic</option>
+                    <% topics.forEach(topic => { %>
+                        <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                    <% }); %>
+                </select>
 
-    <form action="/search-tutors" method="GET">
-    <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
-        
-        <select name="subject">
-            <option value="">Select Topic</option>
-            <% topics.forEach(topic => { %>
-                <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
-            <% }); %>
-        </select>
-
-        <button type="submit">Search</button>
-    </form>
+                <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+                
+                <button type="submit">Search</button>
+            </form>
+        </div>  
+        <div class="right">
+            <div class="navbar-buttons">
+                <a href="/"><button>Home</button></a>
+                <a href="/about-us/"><button>About Us</button></a>
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
+                <a href="/tutor-application/"><button>Become a Tutor</button></a>
+                <a href="/login-form/"><button>Sign In</button></a>
+            </div>
+        </div>
+    </header>
 
     <ul>
         <% tutors.forEach(tutor => { %>

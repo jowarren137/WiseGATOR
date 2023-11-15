@@ -3,7 +3,65 @@ var router = express.Router();
 const db = require('../conf/database.js');
 
 router.get('/about-us/', (req, res) => {
-    res.render('aboutMe-landing');
+    let sql = 'SELECT * FROM tutors';
+    let queryData = [];
+
+    if ((req.query.search || req.query.subject)) {
+        sql += ' WHERE';
+
+        if (req.query.search) {
+            sql += ' name LIKE ?';
+            queryData.push('%' + req.query.search + '%');
+        }
+
+        if (req.query.subject) {
+            if (req.query.search) {
+                sql += ' AND';
+            }
+            sql += ' subject_id = ?';
+            queryData.push(req.query.subject);
+        }
+    }
+    db.query('SELECT * FROM topics', (err, subjects) => {
+        if (err) throw err;
+
+        db.query(sql, queryData, (err, results) => {
+            if (err) throw err;
+            res.render('aboutMe-landing', { tutors: results, topics: subjects, name: req.query.search,
+                subject: req.query.subject });
+        });
+    });
+});
+
+router.get('/dashboard/', (req, res) => {
+    let sql = 'SELECT * FROM tutors';
+    let queryData = [];
+
+    if ((req.query.search || req.query.subject)) {
+        sql += ' WHERE';
+
+        if (req.query.search) {
+            sql += ' name LIKE ?';
+            queryData.push('%' + req.query.search + '%');
+        }
+
+        if (req.query.subject) {
+            if (req.query.search) {
+                sql += ' AND';
+            }
+            sql += ' subject_id = ?';
+            queryData.push(req.query.subject);
+        }
+    }
+    db.query('SELECT * FROM topics', (err, subjects) => {
+        if (err) throw err;
+
+        db.query(sql, queryData, (err, results) => {
+            if (err) throw err;
+            res.render('dashboard', { tutors: results, topics: subjects, name: req.query.search,
+                subject: req.query.subject });
+        });
+    });
 });
 
 // Define a route to serve your main HTML page
