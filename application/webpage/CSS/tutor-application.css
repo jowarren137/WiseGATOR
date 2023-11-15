@@ -1,0 +1,107 @@
+/* Margin and Padding reset */
+body, h1, p, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-image: linear-gradient(#E3CB9C 60%, #dbd4c5);
+    min-height: 100vh; 
+    margin: 0;
+}
+
+/* CSS for Navbar using CSS Grid */
+@media only screen and (max-width: 1000px) {
+    .title {
+        display: none;
+    }
+}
+
+.navbar {
+    font-family: "Lato", sans-serif;
+    background-color: rgb(130, 154, 91);
+    padding: 10px 10px;
+    border-bottom: 1px solid black;
+
+    display: grid;
+    grid-template-columns: auto minmax(auto, 1fr) auto; 
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+.left, .right {
+    display: flex;
+    align-items: center;
+}
+
+.left {
+    justify-self: flex-start;
+}
+
+.right {
+    justify-self: flex-end;
+}
+
+.Logo {
+    border-radius: 5px;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+
+/* ------------------------------------- */
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; 
+    gap: 10px;
+    border: 2px solid black;
+    padding: 20px; 
+    min-height: 100vh; 
+}
+
+.grid-item {
+    padding: 20px; 
+    border: 1px solid grey; 
+}
+/* ---------------------------------------------------------------------- */
+
+.form-container {
+    display: grid;
+    height: 100vh;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.form-container h1 {
+text-align: center;
+}
+
+.form-container form {
+display: grid;
+grid-template-columns: 1fr;
+gap: 10px;
+}
+
+.media-upload {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+}
+
+.form-actions {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+}
+
+.form-actions button {
+/* Additional styling for buttons if needed */
+}
