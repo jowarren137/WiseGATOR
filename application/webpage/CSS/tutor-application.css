@@ -181,14 +181,15 @@ gap: 10px;
 
 .media-upload {
 display: grid;
-grid-template-columns: repeat(1, 1fr);
+grid-template-columns: repeat(1, 0.25fr);
 gap: 10px;
 }
 
 .form-actions {
 display: grid;
-grid-template-columns: repeat(1, 0.25fr);
+grid-template-columns: repeat(2, 0.25fr);
 gap: 10px;
+justify-content: space-between;
 }
 
 .form-actions button {
