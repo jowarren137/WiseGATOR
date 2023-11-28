@@ -1,0 +1,271 @@
+/* Margin and Padding reset */
+body, h1, p, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-image: linear-gradient(#E3CB9C 60%, #dbd4c5);
+    min-height: 100vh; 
+    margin: 0;
+}
+
+/* CSS for Navbar using CSS Grid */
+@media only screen and (max-width: 1000px) {
+    .title {
+        display: none;
+    }
+}
+
+.navbar {
+    font-family: "Lato", sans-serif;
+    background-color: rgb(130, 154, 91);
+    padding: 10px 10px;
+    border-bottom: 1px solid black;
+
+    display: grid;
+    grid-template-columns: auto minmax(auto, 1fr) auto; 
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+.left, .right, .home-link{
+    display: flex;
+    align-items: center;
+}
+
+.left {
+    justify-self: flex-start;
+}
+
+.right {
+    justify-self: flex-end;
+}
+
+.Logo {
+    border-radius: 5px;;
+}
+
+.home-link{
+    background-color: #526566;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.search-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    max-width: 1000px;
+    min-width: 100px;
+    margin-left: 5px;
+    margin-right: 15px;
+    min-width: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.search-form {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
+.search-container select,
+.search-container input,
+.search-container button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.search-container select {
+    width: 120px;
+    margin: 0;
+    background-color: rgb(186, 186, 186);
+    color: #616467;
+}
+
+.search-container select option {
+    background-color: #fff;
+    color: #616467;
+}
+
+.search-container input {
+    width: calc(140% - 20px);
+    
+    
+}
+
+.search-container button {
+    cursor: pointer;
+    background-color: rgb(186, 186, 186);
+    color: #616467;
+    transition: background-color 0.3s, color 0.3s; 
+    margin: 0;
+}
+
+.search-container button:hover {
+    background-color: black;
+    color: #fff;
+}
+
+
+.navbar-buttons {
+    display: grid;
+    align-items: center;
+    grid-auto-flow: column; 
+}
+
+.navbar-buttons button {
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 14px;
+    border: 2px solid black;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    color: black;
+    background-color: #96a087;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.navbar-buttons button:hover {
+    color: white;
+    background-color: #526566;
+}
+
+/* CSS for Dashboard form */
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 15px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.content h1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.welcome-message {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.dashboard-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    border: 1px solid  black; 
+    border-radius: 10px;
+    padding: 15px;
+    background-color:rgb(243, 213, 176);
+}
+
+.dashboard-column {
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.column-title {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.message-item,
+.tutor-item {
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    grid-template-rows: auto 1fr auto; 
+    /* height was set arbitrarily in unison with text in the message boxes (get message char count to grab prop height) */
+    height: 200px;        
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+.message-item img,
+.tutor-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.message-details,
+.tutor-details {
+    padding: 10px;
+}
+
+.message-button {
+    background-color: rgb(186, 186, 186);
+    color: #616467;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.message-button:hover{
+    color: black;
+    background-color: #96a087;
+}
+
+body {
+    /* background-color: DimGrey; */
+    /* color: white;  */
+}
+
+input, select, button {
+    color: black; /* Text color */
+    background-color: white; /* Background color */
+}
+.tutor-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between cards */
+    }
+
+    .tutor-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto; 
+    gap: 10px;
+    padding: 10px; 
+    border: 2px solid black;
+    }
+
+    .tutor-picture {
+    width: 100px; 
+    border-radius: 50%;
+    }
+
+    .tutor-info h3 {
+    margin: 0;
+    padding: 0;
+    }

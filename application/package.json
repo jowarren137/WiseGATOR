@@ -4,7 +4,8 @@
   "description": "## Please when ready add your teams application URL or IP to the repository description. This will help with grading. Teams are expected to keep this value up to date.",
   "main": "index.js",
   "scripts": {
-    "nodemon": "nodemon index.js"
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,9 @@
     "nodemon": "^3.0.1"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "node": "^21.0.0"
   }
 }

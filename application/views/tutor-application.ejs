@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Tutor Application Form</title>
+    <script src="./JS/tutor-application.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/tutor-application.css"/>
+</head>
+<header class="navbar">
+    <div class="left">
+        <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
+        <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+    </div>
+    <div class="search-container">
+        <form class="search-form" action="/search-tutors" method="GET">
+            <select name="subject">
+                <option value="">Select Topic</option>
+                <% topics.forEach(topic => { %>
+                    <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                <% }); %>
+            </select>
+
+            <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+            
+            <button type="submit">Search</button>
+        </form>
+    </div>  
+    <div class="right">
+        <div class="navbar-buttons">
+            <a href="/"><button>Home</button></a>
+            <a href="/about-us/"><button>About Us</button></a>
+            <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
+            <a href="/tutor-application/"><button>Become a Tutor</button></a>
+            <a href="/login-form/"><button>Sign In</button></a>
+        </div>
+    </div>
+</header>
+
+<body>
+  
+<div class="main-container">
+    <div></div>
+    <div class="grid-item">
+        <div class="form-container">
+            <form>
+              <h1>Become A Tutor!</h1>
+
+              <b>Fields marked with * are required!</b>
+              
+              <label for="first-name">First Name *</label>
+              <input type="text" id="first-name" name="first_name" required>
+              
+              <label for="last-name">Last Name *</label>
+              <input type="text" id="last-name" name="last_name" required>
+              
+              <label for="topic">Select Topic *</label>
+              <select id="topic" name="topic" required>
+                <option value="">--Please choose an option--</option>
+              </select>
+              
+              <label for="description">Description *</label>
+              <textarea id="description" name="description" required placeholder="Please tell students about your experience, classes, etc."></textarea>
+              
+              <div class="media-upload">
+                <button type="button">Add a Video</button>
+                <button type="button">Add a Photo</button>
+                <button type="button">Add a CV/Flyer</button>
+              </div>
+              
+              <p>It may take up to 24 hours to process your registration</p>
+              
+              <div class="form-actions">
+                <button type="reset">Clear</button>
+                <button type="submit">Apply!</button>
+              </div>
+            </form>
+          </div>
+    </div>
+    <div></div>
+    <!-- Add more grid items if needed -->
+</div>
+</body>
+</html>
