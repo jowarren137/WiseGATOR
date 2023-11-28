@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/> <!-- For universal navbar, NOTE: already present search-tutors.css ? -->
     <style>
         body {
             background-color: DimGrey;
@@ -20,8 +20,10 @@
 <body>
     <header class="navbar">
         <div class="left">
-            <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-            <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+            <a href="/" class="home-link">
+                <img src="../webpage/tutor-pictures/GATORlogo.png" width="48" alt="Logo" class="Logo">
+                <span class="title" style="color: #efebef; padding-right: 10px; padding-left: 10px;">wiseGATOR</span>
+            </a>
         </div>
         <div class="search-container">
             <form class="search-form" action="/search-tutors" method="GET">
@@ -39,16 +41,18 @@
         </div>  
         <div class="right">
             <div class="navbar-buttons">
-                <a href="/"><button>Home</button></a>
                 <a href="/about-us/"><button>About Us</button></a>
-                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
                 <a href="/tutor-application/"><button>Become a Tutor</button></a>
+
+                <!-- TO DO: If logged in dashboard else login form -->
+                <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
                 <a href="/login-form/"><button>Log In</button></a>
+
+                <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->
             </div>
         </div>
     </header>
-
-    
     <div class="tutor-cards-container">
         <% tutors.forEach(tutor => { %>
             <div class="tutor-card">
