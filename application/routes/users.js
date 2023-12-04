@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const pool = require('../conf/dataPool.js');
+var crypto = require('crypto');
 
 //localhost:3000//register
 router.post('/register/', async function(req, res, next){
@@ -17,8 +18,9 @@ router.post('/register/', async function(req, res, next){
         }
 
         //insert into db
-
-        var[insertResult, _] = await pool.execute(`INSERT INTO users ( name, email, password) VALUE (?,?,?);`, [name,email,password]);
+        
+        var[insertResult, _] = await pool.execute(`INSERT INTO users ( name, email, password) VALUE (?,?,?);`, [name,email,
+            (crypto.createHash('sha1').update(JSON.stringify(password)).digest('bin'))]);
         //respond
         if(insertResult && insertResult.affectedRows == 1){
             return res.redirect('/login-form/');
@@ -38,11 +40,14 @@ router.post('/login/', async function(req, res, next){
     var{password, email} = req.body;
     try{
         //uniquness checks
-        var [results, _] = await pool.execute(`select id from users where email = ?`,[email]);
+        var [results, _] = await pool.execute(`select password from users where email = ?`,[email]);
         if (results && results.length > 0) {
             console.log(`${email} is a user`);
-            // if(Table Users Get By username [username] get password = [password])
-            return res.redirect("/dashboard/");
+             if(crypto.createHash('sha1').update(JSON.stringify(password)).digest('hex')== results[0].password.toString('hex')){
+                console.log(`password is valid`);
+                return res.redirect("/dashboard/");
+             }
+            
         }
         else{
             return res.redirect("/register-form/");
