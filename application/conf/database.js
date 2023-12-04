@@ -7,6 +7,7 @@ const db  = mysql.createConnection({
   password: '',
   database: 'gatorDB'
 });
+
 db.connect((err) => {
   if (err)
       {

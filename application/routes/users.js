@@ -1,19 +1,16 @@
 var express = require('express');
 var router = express.Router();
-const db = require('../conf/database.js');
+const pool = require('../conf/dataPool.js');
 
 //localhost:3000//register
-router.post('/register-form/', async function(req, res, next){
+router.post('/register/', async function(req, res, next){
     
-    var{username,email,password} = req.body;
+    var{email,password, name} = req.body;
     try{
         //uniquness checks
-        var [results, _] = await db.execute(`select id from users where username = ?`,[username]);
-        if (results && results.length > 0) {
-            console.log(`${username} already exists`);
-            return res.redirect("/login-form/");
-        }
-        var [results, _] = await db.execute(`select id from users where email = ?`, [email]);
+      
+        var [results, _] = await pool.execute(`select id from users where email = ?`, [email]);
+        //console.log( await pool.execute(`select id from users where email = ?`, [email]));
         if (results && results.length >0) {
             console.log(`${email} already exists`);
             return res.redirect("/login-form/");
@@ -21,7 +18,7 @@ router.post('/register-form/', async function(req, res, next){
 
         //insert into db
 
-        var[insertResult, _] = await db.execute(`INSERT INTO users (username, email, password) VALUE (?,?,?);`, [username,email,password]);
+        var[insertResult, _] = await pool.execute(`INSERT INTO users ( name, email, password) VALUE (?,?,?);`, [name,email,password]);
         //respond
         if(insertResult && insertResult.affectedRows == 1){
             return res.redirect('/login-form/');
@@ -36,16 +33,16 @@ router.post('/register-form/', async function(req, res, next){
 })
 
 //localhost:3000//login
-router.post('/login-form/', async function(req, res, next){
+router.post('/login/', async function(req, res, next){
     
-    var{username, password} = req.body;
+    var{password, email} = req.body;
     try{
         //uniquness checks
-        var [results, _] = await db.execute(`select id from users where username = ?`,[username]);
+        var [results, _] = await pool.execute(`select id from users where email = ?`,[email]);
         if (results && results.length > 0) {
-            console.log(`${username} is a user`);
+            console.log(`${email} is a user`);
             // if(Table Users Get By username [username] get password = [password])
-            return res.redirect("/search-tutors/");
+            return res.redirect("/dashboard/");
         }
         else{
             return res.redirect("/register-form/");
