@@ -27,7 +27,7 @@ router.get('/about-us/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('aboutMe-landing', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('aboutMe-landing', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
@@ -58,7 +58,7 @@ router.get('/dashboard/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('dashboard', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('dashboard', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
@@ -90,7 +90,7 @@ router.get('/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('homepage', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('homepage', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
@@ -123,7 +123,7 @@ router.get('/tutor-application/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('tutor-application', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('tutor-application', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
@@ -156,7 +156,7 @@ router.get('/login-form/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('login-form', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('login-form', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
@@ -189,7 +189,7 @@ router.get('/register-form/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('register-form', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('register-form', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
@@ -222,7 +222,7 @@ router.get('/dashboard/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('dashboard', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('dashboard', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
@@ -256,7 +256,7 @@ router.get('/search-tutors/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('search-tutors', { tutors: results, topics: subjects, name: req.query.search,
+            res.render('search-tutors', { loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });

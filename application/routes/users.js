@@ -3,6 +3,8 @@ var router = express.Router();
 const pool = require('../conf/dataPool.js');
 var crypto = require('crypto');
 
+
+
 //localhost:3000//register
 router.post('/register/', async function(req, res, next){
     
@@ -45,7 +47,11 @@ router.post('/login/', async function(req, res, next){
             console.log(`${email} is a user`);
              if(crypto.createHash('sha1').update(JSON.stringify(password)).digest('hex')== results[0].password.toString('hex')){
                 console.log(`password is valid`);
+                req.session.userId = email;
                 return res.redirect("/dashboard/");
+             }
+             else{
+                res.status(401).send('Invalid credentials');
              }
             
         }
@@ -59,5 +65,15 @@ router.post('/login/', async function(req, res, next){
     }
  
 })
+
+router.post('/logout/', (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        return res.status(500).send('Could not log out');
+      } else {
+        res.send('Logged out');
+      }
+    });
+  });
 
 module.exports = router;
