@@ -46,7 +46,13 @@
 
                 <!-- TO DO: If logged in dashboard else login form -->
                 <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
-                <a href="/login-form/"><button>Log In</button></a>
+                <% if (loggedIn) { %>
+                    <form action="/users/logout/" method="post">
+                      <button type="submit">Logout</button>
+                    </form>
+                    <% } else { %>
+                      <a href="/login-form/"><button>Log In</button></a>
+                  <% } %>
 
                 <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
                 <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->

@@ -1,27 +1,28 @@
 var express = require('express');
 var router = express.Router();
-const db = require('../conf/database.js');
+const pool = require('../conf/dataPool.js');
+var crypto = require('crypto');
+
+
 
 //localhost:3000//register
-router.post('/register-form/', async function(req, res, next){
+router.post('/register/', async function(req, res, next){
     
-    var{username,email,password} = req.body;
+    var{email,password, name} = req.body;
     try{
         //uniquness checks
-        var [results, _] = await db.execute(`select id from users where username = ?`,[username]);
-        if (results && results.length > 0) {
-            console.log(`${username} already exists`);
-            return res.redirect("/login-form/");
-        }
-        var [results, _] = await db.execute(`select id from users where email = ?`, [email]);
+      
+        var [results, _] = await pool.execute(`select id from users where email = ?`, [email]);
+        //console.log( await pool.execute(`select id from users where email = ?`, [email]));
         if (results && results.length >0) {
             console.log(`${email} already exists`);
             return res.redirect("/login-form/");
         }
 
         //insert into db
-
-        var[insertResult, _] = await db.execute(`INSERT INTO users (username, email, password) VALUE (?,?,?);`, [username,email,password]);
+        
+        var[insertResult, _] = await pool.execute(`INSERT INTO users ( name, email, password) VALUE (?,?,?);`, [name,email,
+            (crypto.createHash('sha1').update(JSON.stringify(password)).digest('bin'))]);
         //respond
         if(insertResult && insertResult.affectedRows == 1){
             return res.redirect('/login-form/');
@@ -36,16 +37,23 @@ router.post('/register-form/', async function(req, res, next){
 })
 
 //localhost:3000//login
-router.post('/login-form/', async function(req, res, next){
+router.post('/login/', async function(req, res, next){
     
-    var{username, password} = req.body;
+    var{password, email} = req.body;
     try{
         //uniquness checks
-        var [results, _] = await db.execute(`select id from users where username = ?`,[username]);
+        var [results, _] = await pool.execute(`select password from users where email = ?`,[email]);
         if (results && results.length > 0) {
-            console.log(`${username} is a user`);
-            // if(Table Users Get By username [username] get password = [password])
-            return res.redirect("/search-tutors/");
+            console.log(`${email} is a user`);
+             if(crypto.createHash('sha1').update(JSON.stringify(password)).digest('hex')== results[0].password.toString('hex')){
+                console.log(`password is valid`);
+                req.session.userId = email;
+                return res.redirect("/dashboard/");
+             }
+             else{
+                res.status(401).send('Invalid credentials');
+             }
+            
         }
         else{
             return res.redirect("/register-form/");
@@ -57,5 +65,15 @@ router.post('/login-form/', async function(req, res, next){
     }
  
 })
+
+router.post('/logout/', (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        return res.status(500).send('Could not log out');
+      } else {
+        res.send('Logged out');
+      }
+    });
+  });
 
 module.exports = router;
