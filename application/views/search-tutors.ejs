@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/> <!-- For universal navbar, NOTE: already present search-tutors.css ? -->
-    <style>
-        body {
-            background-color: DimGrey;
-            color: white; /* Apply white color to the text */
-        }
-
-        input, select, button {
-            color: black; /* Text color */
-            background-color: white; /* Background color */
-        }
-    </style>
+    <script src="../webpage/JS/search-tutors.js" defer></script>
     <title>Tutor Search</title>
 </head>
 <body>
@@ -47,6 +37,7 @@
                 <!-- TO DO: If logged in dashboard else login form -->
                 <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
                 <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
                     <form action="/users/logout/" method="post">
                       <button type="submit">Logout</button>
                     </form>
@@ -60,7 +51,7 @@
         </div>
     </header>
     <div class="tutor-cards-container">
-        <% tutors.forEach(tutor => { %>
+        <% tutors.forEach((tutor, index) => { %>
             <div class="tutor-card">
                 <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="tutor-picture">
                 <div class="tutor-info">
@@ -68,7 +59,20 @@
                     <p>Subject ID: <%= tutor.subject_id %></p>
                 </div>
                 <div class="tutor-contact">
-                    <button type="button">Message</button>
+                     
+                </div>
+                <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                <div id="messagePopup<%= index %>" class="popup">
+                    <!-- Popup content -->
+                    <div class="popup-content">
+                        <span class="close" data-index="<%= index %>">&times;</span>
+                        <p>Enter your message:</p>
+                        <textarea id="messageText<%= index %>" rows="4" cols="50"></textarea>
+                        action="/users/message/" method="post"
+                        <form action="/users/message/" method="post">
+                            <button class="sendMsgBtn" data-index="<%= index %>">Send</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         <% }); %>

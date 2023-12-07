@@ -232,16 +232,10 @@ body {
     border-radius: 5px;
 }
 
-.message-button:hover{
+.messageBtn:hover{
     color: black;
     background-color: #96a087;
 }
-
-body {
-    /* background-color: DimGrey; */
-    /* color: white;  */
-}
-
 input, select, button {
     color: black; /* Text color */
     background-color: white; /* Background color */
@@ -269,3 +263,40 @@ input, select, button {
     margin: 0;
     padding: 0;
     }
+
+    /* Popup box style */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Popup content */
+.popup-content {
+    background-color: rgb(130, 154, 91);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

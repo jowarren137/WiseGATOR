@@ -1,10 +1,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/> <!-- For universal navbar -->
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/home.css"/> <!-- TO DO: Delete any navbar css -->
-
-    <style>
-       
-    </style>
 </head>
 
 <body>
@@ -37,6 +33,7 @@
                 <!-- TO DO: If logged in dashboard else login form -->
                 <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
                 <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
                     <form action="/users/logout/" method="post">
                       <button type="submit">Logout</button>
                     </form>

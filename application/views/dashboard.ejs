@@ -37,6 +37,7 @@
                 <!-- TO DO: If logged in dashboard else login form -->
                 <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
                 <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
                     <form action="/users/logout/" method="post">
                       <button type="submit">Logout</button>
                     </form>

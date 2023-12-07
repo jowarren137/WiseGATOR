@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tutor Application Form</title>
-    <script src="./JS/tutor-application.js" defer></script>
+    <script src="../webpage/JS/tutor-application.js" defer></script>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/> <!-- For universal navbar -->
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/tutor-application.css"/> <!-- TO DO: Delete navbar css -->
 </head>
@@ -38,12 +38,13 @@
             <!-- TO DO: If logged in dashboard else login form -->
             <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
             <% if (loggedIn) { %>
-                <form action="/users/logout/" method="post">
-                  <button type="submit">Logout</button>
-                </form>
-                <% } else { %>
-                  <a href="/login-form/"><button>Log In</button></a>
-              <% } %>
+              <a href="/dashboard/"><button>Dashboard</button></a>
+              <form action="/users/logout/" method="post">
+                <button type="submit">Logout</button>
+              </form>
+              <% } else { %>
+                <a href="/login-form/"><button>Log In</button></a>
+            <% } %>
 
             <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
             <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->

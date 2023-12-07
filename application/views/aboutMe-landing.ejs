@@ -33,11 +33,11 @@
       </div>  
       <div class="right">
           <div class="navbar-buttons">
-              <a href="/"><button>Home</button></a>
               <a href="/about-us/"><button>About Us</button></a>
               <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
               <a href="/tutor-application/"><button>Become a Tutor</button></a>
               <% if (loggedIn) { %>
+                <a href="/dashboard/"><button>Dashboard</button></a>
                 <form action="/users/logout/" method="post">
                   <button type="submit">Logout</button>
                 </form>
