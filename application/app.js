@@ -21,7 +21,8 @@ app.use(session({
   secret: 'process.env.secretkey', // Secret key to sign the session ID cookie
   resave: false, // Forces the session to be saved back to the session store
   saveUninitialized: false, // Forces a session that is "uninitialized" to be saved to the store
-  // Optional settings like cookie: { maxAge: ... } can be added here
+  // Optional settings like cookie: { minAge: ... } can be added here
+  userId: ""
 }));
 
 

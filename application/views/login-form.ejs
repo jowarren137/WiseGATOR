@@ -7,7 +7,7 @@
     <title>Login Form</title>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/> <!-- For universal navbar -->
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/login-form.css"/> <!-- TO DO: Delete any navbar css -->
-    <!-- <script src="./JS/login-form.js" defer></script> -->
+    <script src="../webpage/JS/login-form.js" defer></script>
 </head>
 <body>
     <header class="navbar">
@@ -39,6 +39,7 @@
                 <!-- TO DO: If logged in dashboard else login form -->
                 <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
                 <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
                     <form action="/users/logout/" method="post">
                       <button type="submit">Logout</button>
                     </form>
@@ -68,10 +69,15 @@
     
         </form>
     </main>
+    <% if (error) { %>
+        <div class="error-message">
+          <%= error %>
+        </div>
+      <% } %>
     <!-- Temporary Navigation to hardcoded dashboard -->
-    <div style="display: grid; place-items: center;">
+    <!-- <div style="display: grid; place-items: center;">
         <a href="/dashboard/"><button style="width: 100%; padding: 10px;">Click For Temporary Dashboard Access</button></a>
-    </div>
+    </div> -->
     <!-- Temp Error Handling (if individual messages wrap input and label in div 'input-control')-->
     <div class ="input-control">
         <div class="error" id="error"></div>

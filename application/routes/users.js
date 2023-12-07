@@ -51,12 +51,12 @@ router.post('/login/', async function(req, res, next){
                 return res.redirect("/dashboard/");
              }
              else{
-                res.status(401).send('Invalid credentials');
+                res.redirect('/login-form/?error=Invalid credentials');
              }
             
         }
         else{
-            return res.redirect("/register-form/");
+            res.redirect('/login-form/?error=Invalid credentials');
         }
     
 
@@ -71,9 +71,17 @@ router.post('/logout/', (req, res) => {
       if (err) {
         return res.status(500).send('Could not log out');
       } else {
-        res.send('Logged out');
+        res.redirect('/login-form/');
       }
     });
   });
 
 module.exports = router;
+
+
+//localhost:3000//login
+router.post('/message/', async function(req, res, next){
+    var{messageText, tutor} = req.body;
+    var[insertResult, _] = await pool.execute(`INSERT INTO messages ( TutorID, SenderID, Message) VALUE (?,?,?);`, [req.session.userId]);
+
+})

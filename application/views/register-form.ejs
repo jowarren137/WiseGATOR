@@ -7,7 +7,7 @@
     <title>Register Form</title>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/> <!-- For universal navbar -->
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/register-form.css"/> <!-- TO DO: Delete any navbar css -->
-    <script src="./JS/register-form.js" defer></script>
+    <script src="../webpage/JS/register-form.js" defer></script>
 </head>
 <body>
     <header class="navbar">
@@ -39,6 +39,7 @@
                 <!-- TO DO: If logged in dashboard else login form -->
                 <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
                 <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
                     <form action="/users/logout/" method="post">
                       <button type="submit">Logout</button>
                     </form>
