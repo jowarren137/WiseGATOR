@@ -56,19 +56,8 @@
             <h2>Welcome Back, Joe Smuck!</h2>
         </div>
         <div class="dashboard-columns">
-            <div class="incoming-messages">
-                <h3>You have # Incoming Messages:</h3>  <!-- TO DO: Get information from Database -->
-                <div class="message-item">
-                    <img src="../webpage/tutor-pictures/tutor_1.png" alt="PFP">
-                    <div class="message-details">
-                        <p>11-12-2023 11:11pm</p>   <!-- TO DO: Get information from Database (use id for messages not user)-->
-                        <p>Name: Steve Alex</p> 
-                        <p>Email: stevealex@example.com</p>
-                        <p>Class: Computer Science</p> <br>                         
-                        <p>Message: Hello my name is Steve I am messaging in hopes of being able to tutee with your computer science group, I saw your post by
-                        using the search bar in the nav menu above!</p>   
-                    </div>
-                </div>
+            <div class="sent-messages">
+                <h3>You have Messages:</h3>  <!-- TO DO: Get information from Database -->
 
                 <!-- START OF PRESENTATION DISPLAY DIVS FOR INCOMING MESSAGES -->
                 <div class="message-item">
@@ -106,40 +95,19 @@
             </div>
             <div class="your-posted topics">
                 <h3>Sent Messages:</h3>
-                <div class="tutor-item">
-                    <img src="../webpage/tutor-pictures/tutor_5.png" alt="PFP">
-                    <div class="tutor-details">
-                        <p>Name: Joe Smuck</p>              <!-- TO DO: Get information from Database (use id for post not user)-->
-                        <p>Email: Joesmuck@example.com</p>
-                        <p>Class: Computer Science</p>
-                        <p>Description: This tutoring session will be held mondays and wednesdays and is for 300 level or lower computer science courses</p><br>  
-                        <p><a href="">Click here for additional tutor related Video, Image, or CV/Flyer</a></p> 
-                    </div>
-                </div>
 
-                <!-- START OF PRESENTATION DISPLAY DIVS FOR PREVIOUSLY SEARCHED TUTORS -->
-                <div class="tutor-item">
-                    <img src="../webpage/tutor-pictures/tutor_5.png" alt="PFP">
-                    <div class="tutor-details">
-                        <p>Name: Joe Smuck</p>              <!-- TO DO: Get information from Database (use id for post not user)-->
-                        <p>Email: Joesmuck@example.com</p>
-                        <p>Class: Mathmatics</p>
-                        <p>Description: Proin non urna vel enim aliquam condimentum. Fusce suscipit, arcu et efficitur efficitur.</p><br>  
-                        <p><a href="">Click here for additional tutor related Video, Image, or CV/Flyer</a></p> 
+                <% sentMessages.forEach((msg, index) => { %>
+                    <div class="tutor-item">
+                        <img src="../webpage/tutor-pictures/tutor_5.png" alt="PFP">
+                        <div class="tutor-details">
+                            <p>Name: Joe Smuck</p>              <!-- TO DO: Get information from Database (use id for post not user)-->
+                            <p>Email: Joesmuck@example.com</p>
+                            <p>Class: Computer Science</p>
+                            <p><%= msg.Message %></p><br>  
+                            <p><a href="">Click here for additional tutor related Video, Image, or CV/Flyer</a></p> 
+                        </div>
                     </div>
-                </div>
-                <div class="tutor-item">
-                    <img src="../webpage/tutor-pictures/tutor_5.png" alt="PFP">
-                    <div class="tutor-details">
-                        <p>Name: Joe Smuck</p>              <!-- TO DO: Get information from Database (use id for post not user)-->
-                        <p>Email: Joesmuck@example.com</p>
-                        <p>Class: Physics</p>
-                        <p>Description: libero metus at nunc. Vestibulum dignissim, ex nec facilisis venenatis aoeuid htadocrl tedin ntoehula snteuhi.</p><br>  
-                        <p><a href="">Click here for additional tutor related Video, Image, or CV/Flyer</a></p> 
-                    </div>
-                </div>
-                <!-- END OF PRESENTATION DISPLAY DIVS FOR PREVIOUSLY SEARCHED TUTORS -->
-
+                <% }); %>
             </div>
         </div>
     </main>

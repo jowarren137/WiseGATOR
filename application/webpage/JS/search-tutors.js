@@ -28,7 +28,8 @@ sendButtons.forEach(btn => {
 // Function to handle send button click
 function handleSendMessage(index) {
     var messageText = document.getElementById("messageText" + index);
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //sets empty string before sent to server
+    // messageText.value = "";
     var popup = document.getElementById("messagePopup" + index);
     popup.style.display = "none";
 }

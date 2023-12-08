@@ -67,8 +67,9 @@
                     <div class="popup-content">
                         <span class="close" data-index="<%= index %>">&times;</span>
                         <p>Enter your message:</p>
-                        <textarea id="messageText<%= index %>" rows="4" cols="50"></textarea>
                         <form action="/users/message/" method="post">
+                            <textarea id="messageText<%= index %>" name="messageText" rows="4" cols="50"></textarea>
+                            <input type="hidden" name="tutorId" value="<%= tutor.id %>">
                             <button class="sendMsgBtn" data-index="<%= index %>">Send</button>
                         </form>
                     </div>

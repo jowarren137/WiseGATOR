@@ -36,6 +36,7 @@ router.get('/about-us/', (req, res) => {
 router.get('/dashboard/', (req, res) => {
     let sql = 'SELECT * FROM tutors';
     let queryData = [];
+    
 
     if ((req.query.search || req.query.subject)) {
         sql += ' WHERE';
@@ -58,8 +59,15 @@ router.get('/dashboard/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('dashboard', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
-                subject: req.query.subject });
+            db.query('SELECT * FROM messages WHERE SenderID = ?', (req.session.userId[0][0]).id, (err, sent) => {
+                if (err) throw err;
+                // db.query('SELECT * FROM messages WHERE TutorID = ?', (req.session.tutorId[0]).id, (err, received) => {
+                //     if (err) throw err;
+                //receivedMessages: received,
+                res.render('dashboard', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, sentMessages: sent, sentSize: sent.size,
+                      name: req.query.search, subject: req.query.subject });
+                // });    
+            });    
         });
     });
 });
