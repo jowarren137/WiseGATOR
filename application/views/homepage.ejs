@@ -8,7 +8,7 @@
 
       gtag('config', 'G-N3SV9BXBFJ');
     </script>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/> <!-- For universal navbar -->
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/home.css"/> <!-- TO DO: Delete any navbar css -->
 </head>
 
@@ -55,25 +55,88 @@
             </div>
         </div>
     </header>
+
     <div class="main-container">
         <div class="nested-grid">
  
           <div class="text-button-container">
   
               <span id="element" class="typed-cursor"></span>
+              <p>Find SF State exclusive tutors or offer your expertise. Navigate with the buttons below or the navbar above. Search with Confidence.</p>
+
               <div class="home-container">
   
                   <button class="button find-tutor" onclick="location.href='/search-tutors';">Find a Tutor</button>
                   <button class="button become-tutor" onclick="location.href='/tutor-application/';">Become a Tutor</button>
+
                 </div>
           </div>
           
           <div class="additional-info">
-            <h2>Recently Approved Tutors</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+            <h2>Approved Tutors</h2>
+              <div class="additional-info-cards">
+
+                  <!-- COMMENTED SECTION TAKEN FROM SEARCH, UNDER COMMENT IS HARDCODED DIVS FOR STYLING -->
+
+                  <!-- <div class="tutor-cards-container">
+                    <% tutors.forEach((tutor, index) => { %>
+                        <div class="tutor-card">
+                            <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="tutor-picture">
+                            <div class="tutor-info">
+                                <h3><%= tutor.name %></h3>
+                                <p>Subject ID: <%= tutor.subject_id %></p>
+                            </div>
+                            <div class="tutor-contact">
+                                
+                            </div>
+                            <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                        </div>
+                    <% }); %>
+                  </div> -->
+
+                  <div class="tutor-cards-container">
+                    <div class="tutor-card">
+                        <img src="../webpage/tutor-pictures/tutor_5.png" alt="<%= tutor.name %>" class="tutor-picture">
+                        <div class="tutor-info">
+                            <h3>Johnathan Cena</h3>
+                            <p>Subject ID: CSS</p>
+                        </div>
+                        <div class="tutor-contact">
+                        </div>
+                        <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                    </div>
+                </div>
+
+                <div class="tutor-cards-container">
+                    <div class="tutor-card">
+                        <img src="../webpage/tutor-pictures/tutor_5.png" alt="<%= tutor.name %>" class="tutor-picture">
+                        <div class="tutor-info">
+                            <h3>Johnathan Cena</h3>
+                            <p>Subject ID: CSS</p>
+                        </div>
+                        <div class="tutor-contact">
+                        </div>
+                        <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                    </div>
+                </div>
+
+              <div class="tutor-cards-container">
+                  <div class="tutor-card">
+                      <img src="../webpage/tutor-pictures/tutor_5.png" alt="<%= tutor.name %>" class="tutor-picture">
+                      <div class="tutor-info">
+                          <h3>Johnathan Cena</h3>
+                          <p>Subject ID: WWE</p>
+                      </div>
+                      <div class="tutor-contact">
+                      </div>
+                      <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                  </div>
+              </div>
+
           </div>
-        </div>
+        </div>  
       </div>
+    </div>
 
 
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>

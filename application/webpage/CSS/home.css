@@ -1,64 +1,20 @@
-body{
-  /* Page was scrolling horizontally, temporary fix before presentation - Darien*/
-  overflow-x: hidden;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #04AA6D;
-}
-
-.title {
-  font-family: "Lato", sans-serif;
-  font-size: 24px;
-}
-.left {
-  padding-left: 5px;
-}
-.right {
-  float: right;
-  padding-left: 5px;
-}
-
-/* --------------------------------------------------------------------- */
 
 .main-container {
 display: grid;
 grid-template-columns: 1fr; 
 grid-template-rows: 1fr; 
-width: 100vw; 
+width: 100vw - 10px; 
+/* -10px to resolve horizontal scroll issue */
 height: 100vh;
-/* border: 2px solid black;  */
 margin: 20px; 
+/* border: 2px solid black;  */
 }
 
 .nested-grid {
 display: grid;
 grid-template-columns: repeat(1, 1fr); 
-grid-template-rows: 5fr 1fr; 
+grid-template-rows: 1.1fr 1fr; 
+/* Initially 5fr 1fr, causing issues with displaying content vertially */
 gap: 10px; 
 /* border: 2px solid black;  */
 }
@@ -66,6 +22,7 @@ gap: 10px;
 .nested-grid > div {
 /* border: 1px solid black;  */
 }
+
 .home-container {
 display: grid;
 grid-template-columns: repeat(
@@ -87,22 +44,6 @@ border: 2px solid black;
 background-color: grey; 
 }
 
-.additional-info {
-border: 2px solid black; 
-padding: 20px; 
-}
-
-.additional-info h2 {
-margin-top: 0; 
-text-align: center; 
-
-}
-
-.additional-info p {
-text-align: justify; 
-
-}
-
 .text-button-container {
 display: grid;
 grid-template-columns: repeat(1, 1fr); 
@@ -119,6 +60,12 @@ text-align: center;
 font-size: 2em; 
 }
 
+.text-button-container p {
+  font-size: 18px;
+  line-height: 1.2;
+  
+}
+
 #element {
   display: inline;
   font-size: 2em; 
@@ -129,4 +76,80 @@ font-size: 2em;
 .typed-cursor {
   display: inline-block;
   vertical-align: text-bottom;
+}
+
+/* --------------  HERE IS TUTOR CARD CSS ON HOMEPAGE  ----------------- */
+
+.additional-info {
+  border: 2px solid black;
+  padding: 20px;
+}
+  
+.additional-info h2 {
+margin-top: 0; 
+text-align: center; 
+
+}
+
+.additional-info-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tutor-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.tutor-card {
+  max-width: 20rem;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tutor-picture {
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.tutor-info {
+  padding: 1.25rem;
+}
+
+.tutor-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #333;
+}
+
+.tutor-info p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.messageBtn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background-color:#04AA6D;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.messageBtn:hover {
+  background-color:#006b44;
 }
