@@ -23,7 +23,8 @@ app.use(session({
   saveUninitialized: false, // Forces a session that is "uninitialized" to be saved to the store
   // Optional settings like cookie: { minAge: ... } can be added here
   userId: 0,
-  tutorId: 0
+  tutorId: 0,
+  fullName: ""
 }));
 
 
