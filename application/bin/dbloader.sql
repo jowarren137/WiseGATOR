@@ -46,7 +46,7 @@ CREATE TABLE `tutors` (
 	(7, 'Joe Schmuck', 'MATH'),
 	(8, 'John Doe', 'CSC'); 
 
-  UPDATE tutor SET picture = CONCAT('tutor_', id) WHERE id BETWEEN 1 AND 8;
+  UPDATE tutors SET picture = CONCAT('tutor_', id) WHERE id BETWEEN 1 AND 8;
 
   -- Create the 'users' table
 CREATE TABLE `users` (
@@ -84,3 +84,22 @@ SELECT id, name,
        CONCAT(LOWER(name), '@example.com') AS email, 
        UNHEX(SHA1('defaultPassword')) AS password
 FROM tutors;
+
+--------------------------------------------------
+
+ALTER TABLE `messages`
+MODIFY `TutorPostID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+ALTER TABLE `tutors`
+ADD COLUMN `user_id` INT NOT NULL;
+
+SET FOREIGN_KEY_CHECKS=0;
+
+ALTER TABLE `tutors`
+ADD CONSTRAINT `fk_user_id`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+UPDATE tutors SET user_id = id WHERE id BETWEEN 1 AND 8;

@@ -47,7 +47,17 @@ router.post('/login/', async function(req, res, next){
             console.log(`${email} is a user`);
              if(crypto.createHash('sha1').update(JSON.stringify(password)).digest('hex')== results[0].password.toString('hex')){
                 console.log(`password is valid`);
-                req.session.userId = email;
+                req.session.userId = await pool.execute(`select id from users where email = ?`,[email]);
+                req.session.fullName = await pool.execute(`select name from users where email = ?`,[email]);
+                 var tutorId = (await pool.execute(`select id from tutors where user_id = ?`,[(req.session.userId[0][0].id)]));
+                if(tutorId[0][0])
+                {
+                    req.session.tutorId = tutorId;
+                    req.session.isTutor = true;
+                }
+                else{
+                    console.log("Not a tutor");
+                }
                 return res.redirect("/dashboard/");
              }
              else{
@@ -81,7 +91,14 @@ module.exports = router;
 
 //localhost:3000//login
 router.post('/message/', async function(req, res, next){
-    var{messageText, tutor} = req.body;
-    var[insertResult, _] = await pool.execute(`INSERT INTO messages ( TutorID, SenderID, Message) VALUE (?,?,?);`, [req.session.userId]);
+    if (req.session.userId)
+    {
+        var{messageText, tutorId} = req.body;
+        var[insertResult, _] = await pool.execute(`INSERT INTO messages ( TutorID, SenderID, Message) VALUE (?,?,?);`,
+         [tutorId, (req.session.userId[0][0]).id, messageText]);
+    }
+    else{
+        res.redirect('/login-form/?error=Login to send message');
+    }
 
 })
