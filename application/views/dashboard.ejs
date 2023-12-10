@@ -57,15 +57,15 @@
         </div>
         <div class="dashboard-columns">
             <div class="sent-messages">
-                <h3>You have <%=numInbox%> Messages:</h3>  <!-- TO DO: Get information from Database -->
-                <% receivedMessages.forEach((msg, index) => { %>
+                <h3>You have <%=numInbox%> Messages:</h3>
                 <!-- START OF PRESENTATION DISPLAY DIVS FOR INCOMING MESSAGES -->
+                <% receivedMessages.forEach((msg, index) => { %>
                 <div class="message-item">
-                    <img src="../webpage/tutor-pictures/tutor_2.png" alt="PFP">
+                    <img src="../webpage/tutor-pictures/default.png" alt="PFP">
                     <div class="message-details">
-                        <p>11-11-2023 11:11pm</p>  
-                        <p>Name: Cave Johnson</p>
-                        <p>Email: Cave@example.com</p><br>     
+                        <p><%=msg.Date%></p>  
+                        <p>From: <%=(recUsers[index]).name%></p>
+                        <p>Email: <%=(recUsers[index]).email%></p> 
                         <p></p>                                 
                         <p><%= msg.Message %></p></p>    
                     </div>
@@ -80,13 +80,13 @@
 
                 <% sentMessages.forEach((msg, index) => { %>
                     <div class="tutor-item">
-                        <img src="../webpage/tutor-pictures/tutor_5.png" alt="PFP">
+                        <img src="../webpage/tutor-pictures/<%=(recTutors[index]).picture%>.png" alt="PFP">
                         <div class="tutor-details">
-                            <p>Name: Joe Smuck</p>              <!-- TO DO: Get information from Database (use id for post not user)-->
-                            <p>Email: Joesmuck@example.com</p>
-                            <p>Class: Computer Science</p>
+                            <%=msg.Date%>
+                            <p>To: <%=(recTutors[index]).name%></p>
+                            <p>Topic: <%=(recTutors[index]).subject_id%></p>
                             <p></p>
-                            <p><%= msg.Message %></p><br>  
+                            <p><%= msg.Message %></p>  
                             <p><a href="">Click here for additional tutor related Video, Image, or CV/Flyer</a></p> 
                         </div>
                     </div>

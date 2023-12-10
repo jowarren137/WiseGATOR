@@ -53,6 +53,7 @@ router.post('/login/', async function(req, res, next){
                 if(tutorId[0][0])
                 {
                     req.session.tutorId = tutorId;
+                    req.session.isTutor = true;
                 }
                 else{
                     console.log("Not a tutor");

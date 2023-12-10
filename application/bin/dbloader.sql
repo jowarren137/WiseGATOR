@@ -85,6 +85,8 @@ SELECT id, name,
        UNHEX(SHA1('defaultPassword')) AS password
 FROM tutors;
 
+--------------------------------------------------
+
 ALTER TABLE `messages`
 MODIFY `TutorPostID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
 

@@ -24,7 +24,8 @@ app.use(session({
   // Optional settings like cookie: { minAge: ... } can be added here
   userId: 0,
   tutorId: 0,
-  fullName: ""
+  fullName: "",
+  isTutor: false
 }));
 
 
