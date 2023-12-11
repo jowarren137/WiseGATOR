@@ -15,7 +15,7 @@ display: grid;
 grid-template-columns: repeat(1, 1fr); 
 grid-template-rows: 1.1fr 1fr; 
 /* Initially 5fr 1fr, causing issues with displaying content vertially */
-gap: 10px; 
+gap: 20px; 
 /* border: 2px solid black;  */
 }
 
@@ -40,8 +40,9 @@ width: 100%;
 padding: 15px 30px; 
 font-size: 1.5rem; 
 cursor: pointer; 
-border: 2px solid black;
-background-color: grey; 
+border: none;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+background-color: rgb(163, 163, 163)
 }
 
 .text-button-container {
@@ -49,7 +50,10 @@ display: grid;
 grid-template-columns: repeat(1, 1fr); 
 grid-template-rows: 1fr 1fr; 
 gap: 10px; 
-border: 2px solid black; 
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+background-color: #61797a;
+background-image: linear-gradient(319deg, rgb(130, 154, 91) 0%, white 30%, #ebc774 100%);
 text-align: center; 
 font-size: 2em; 
 display: flex;
@@ -81,7 +85,9 @@ font-size: 2em;
 /* --------------  HERE IS TUTOR CARD CSS ON HOMEPAGE  ----------------- */
 
 .additional-info {
-  border: 2px solid black;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   padding: 20px;
 }
   
@@ -108,7 +114,7 @@ text-align: center;
   max-width: 20rem;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
 }
 
 .tutor-picture {

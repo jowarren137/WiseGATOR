@@ -28,7 +28,7 @@ body {
     background-color: white;
     padding-left: 50px;
     padding-right: 50px;
-    border: 1px solid black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 
     display: grid;
@@ -59,7 +59,7 @@ body {
     width: 50%;                                                      
     background-color: white; 
     color: black; 
-    border: 1px solid black;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
     margin-top: 20px;
     margin-bottom: 25px;
     border-radius: 5px; 
