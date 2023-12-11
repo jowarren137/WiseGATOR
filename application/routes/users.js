@@ -16,7 +16,7 @@ router.post('/register/', async function(req, res, next){
         //console.log( await pool.execute(`select id from users where email = ?`, [email]));
         if (results && results.length >0) {
             console.log(`${email} already exists`);
-            return res.redirect("/login-form/");
+            return res.redirect("/login-form/?error=Already a user");
         }
 
         //insert into db
@@ -27,7 +27,7 @@ router.post('/register/', async function(req, res, next){
         if(insertResult && insertResult.affectedRows == 1){
             return res.redirect('/login-form/');
         }else{
-            return res.redirect('/register-form/');
+            return res.redirect('/register-form/?error=Failed to register user');
         }
 
     }catch(err){
@@ -89,7 +89,6 @@ router.post('/logout/', (req, res) => {
 module.exports = router;
 
 
-//localhost:3000//login
 router.post('/message/', async function(req, res, next){
     if (req.session.userId)
     {
@@ -100,5 +99,11 @@ router.post('/message/', async function(req, res, next){
     else{
         res.redirect('/login-form/?error=Login to send message');
     }
+
+})
+
+
+router.post('/register-tutor/', async function(req, res, next){
+   
 
 })
