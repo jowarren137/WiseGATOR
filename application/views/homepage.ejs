@@ -72,31 +72,9 @@
                 </div>
           </div>
           
-          <div class="additional-info">
+        <div class="additional-info">
             <h2>Approved Tutors</h2>
-              <div class="additional-info-cards">
-
-                  <!-- COMMENTED SECTION TAKEN FROM SEARCH, UNDER COMMENT IS HARDCODED DIVS FOR STYLING -->
-
-                  <!-- <div class="tutor-cards-container">
-                    <% tutors.forEach((tutor, index) => { %>
-                        <div class="tutor-card">
-                            <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="tutor-picture">
-                            <div class="tutor-info">
-                                <h3><%= tutor.name %></h3>
-                                <p>Subject ID: <%= tutor.subject_id %></p>
-                            </div>
-                            <div class="tutor-contact">
-                                
-                            </div>
-                            <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
-                        </div>
-                    <% }); %>
-
-                  </div> -->
-
-                
-                    
+              <div class="additional-info-cards">     
                     <div class="tutor-cards-container">
                          <% tutors.forEach((tutor, index) => { %>
                             <% if (index < 3) { %>
@@ -114,16 +92,46 @@
                             <% } %>
                         <% }); %>
                     </div>
-
-    
-
-                  
-
-                  
-
-          </div>
-        </div>  
+                </div>
+            </div>  
       </div>
+
+    </div>
+        <footer class="site-footer">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3>Company Name</h3>
+                    <p>Description of the company or mission statement. This section can be a brief introduction to your company.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>123 Street Name, City, Country</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: info@example.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <p>
+                        <!-- Icons or links to social media platforms -->
+                        <a href="#">Facebook</a> | 
+                        <a href="#">Twitter</a> | 
+                        <a href="#">Instagram</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Company Name. All Rights Reserved.</p>
+            </div>
+        </footer>
     </div>
 
 
@@ -136,4 +144,6 @@ var typed = new Typed('#element', {
   cursorChar: '|', // Default cursor character
 });
 </script>
+
+
 </body>
