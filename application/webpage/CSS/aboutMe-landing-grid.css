@@ -2,7 +2,7 @@
     height: 85vh;
   
     display: grid;
-    gap: 2rem;
+    gap: 1rem;
   
     /* Explicit grid */
     grid-template-areas: 
@@ -40,7 +40,7 @@ a {
 }
 
 .card {
-    background-color: #231161 ;
+    background-color: #365153 ;
     animation: cardEntrance 700ms ease-out;
     animation-fill-mode: backwards;
 
