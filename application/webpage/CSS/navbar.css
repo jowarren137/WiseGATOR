@@ -74,6 +74,7 @@ body {
     min-width: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+    border-top-right-radius: 8px;
     overflow: hidden;
     white-space: nowrap;
     box-sizing: border-box;
@@ -97,6 +98,7 @@ body {
 
 .search-container select {
     width: 120px;
+    height: 36.5px;
     margin: 0;
     background-color: rgb(186, 186, 186);
     color: #616467;
@@ -110,7 +112,6 @@ body {
 .search-container input {
     width: calc(140% - 20px);
     
-    
 }
 
 .search-container button {
@@ -119,6 +120,7 @@ body {
     color: #616467;
     transition: background-color 0.3s, color 0.3s; 
     margin: 0;
+   
 }
 
 .search-container button:hover {
