@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const pool = require('../conf/dataPool.js');
 var crypto = require('crypto');
+const multer = require('multer');
 
 
 
@@ -103,7 +104,69 @@ router.post('/message/', async function(req, res, next){
 })
 
 
-router.post('/register-tutor/', async function(req, res, next){
-   
+router.post('/register-tutor/', async function(req, res, next) {
+    if(req.session.userId && !req.session.isTutor)
+    {
+        const storage = multer.diskStorage({
+            destination: function(req, file, cb) {
+                cb(null, '../application/webpage/tutor-pictures/');
+            },
+            filename: function(req, file, cb) {
+                const extension = file.originalname.split('.').pop();
+                const filename = "tutor_"+file.fieldname+"_"+(req.session.userId[0][0]).id +"."+ extension;
+                cb(null, filename);
+            }
+        });
 
-})
+        const upload = multer({ storage: storage, limits: { fileSize: 10000000 } }); // 10MB file size
+
+        upload.fields([{name: 'video'}, {name: 'photo'}, {name: 'flyer'}])(req, res, async function (err) {
+            if (err instanceof multer.MulterError) {
+                // A Multer error occurred when uploading.
+                return next(err);
+            } else if (err) {
+                // An unknown error occurred when uploading.
+                return next(err);
+            }
+
+    
+            var{first_name, last_name, topic, description} = req.body;
+            let nombre = "";
+            if (first_name && last_name)
+            {
+                nombre = (first_name + " " + last_name);
+            }
+            var videoName = "", photoName = "", flyerName = "";
+            if (req.files['video'])
+            {
+                videoName = ("tutor_video_" +(req.session.userId[0][0]).id);
+            }
+            if (req.files['photo'])
+            {
+                photoName = ("tutor_photo_" +(req.session.userId[0][0]).id);
+            }
+            else{
+                photoName = "default";
+            }
+            if (req.files['flyer'])
+            {
+                flyerName = ("tutor_flyer_" +(req.session.userId[0][0]).id);
+            }
+            
+            
+            var[insertResult, _] = await pool.execute(`INSERT INTO tutors ( name, subject_id, description, flyer, picture, video, user_id) VALUE (?,?,?,?,?,?,?);`,
+                [nombre, topic, description, flyerName, photoName, videoName, (req.session.userId[0][0]).id]);
+            console.log(insertResult);
+            res.redirect('/search-tutors/');
+        });
+    }
+    else if(req.session.isTutor){
+        //Handle update tutor info
+        res.redirect('/login-form/?error=Need to implement updates');
+    }
+    else{
+        //Handle saving form info while logging in
+        res.redirect('/login-form/?error=Login to register as tutor');
+    }
+    
+});
