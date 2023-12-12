@@ -99,16 +99,19 @@
                     
                     <div class="tutor-cards-container">
                          <% tutors.forEach((tutor, index) => { %>
-                            <div class="tutor-card">
-                                <img src="../webpage/tutor-pictures/tutor_5.png" alt="<%= tutor.name %>" class="tutor-picture">
-                                <div class="tutor-info">
-                                    <h3><%= tutor.name %></h3>
-                                    <p>Topic: <%= tutor.subject_id %></p>
+                            <% if (index < 3) { %>
+                                <div class="tutor-card">
+                                    <img src="../webpage/tutor-pictures/tutor_5.png" alt="<%= tutor.name %>" class="tutor-picture">
+                                    <div class="tutor-info">
+                                        <h3><%= tutor.name %></h3>
+                                        <p>Topic: <%= tutor.subject_id %></p>
+                                    </div>
+                                    <div class="tutor-contact">
+                                    </div>
+                                    <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                                    
                                 </div>
-                                <div class="tutor-contact">
-                                </div>
-                                <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
-                            </div>
+                            <% } %>
                         <% }); %>
                     </div>
 
