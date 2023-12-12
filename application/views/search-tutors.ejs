@@ -76,7 +76,7 @@
                     <!-- Popup content -->
                     <div class="popup-content">
                         <span class="close" data-index="<%= index %>">&times;</span>
-                        <p>To: Firstname Lastname</p> <!-- TO DO: Get name of tutor user is messaging-->
+                        <p>To: <%= tutor.name %></p> <!-- TO DO: Get name of tutor user is messaging-->
                         <p>Enter your message: </p>
                         <form action="/users/message/" method="post">
                             <textarea id="messageText<%= index %>" name="messageText" rows="4" cols="50" placeholder="Type a message here..."></textarea>
