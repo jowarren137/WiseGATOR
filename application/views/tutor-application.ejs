@@ -89,15 +89,20 @@
               <textarea id="description" name="description" required placeholder="Please tell students about your experience, classes, etc."></textarea>
               
               <div class="media-upload">
-                <button type="button">Add a Video</button>
-                <button type="button">Add a Photo</button>
-                <button type="button">Add a CV/Flyer</button>
+                <label for="photo">Add a Photo</label>
+                <input type="file" id="photo" name="photo" accept=".png">
+                
+                <label for="flyer">Add a CV/Flyer</label>
+                <input type="file" id="flyer" name="flyer" accept=".pdf">
+                
+                <label for="video">Add a Video</label>
+                <input type="file" id="video" name="video" accept=".mp4">
               </div>
               
               <p>It may take up to 24 hours to process your registration</p>
               
               <div class="form-actions">
-                <button type="submit"><%=isTutor?"Submit":"Apply!"%></button>
+                <button type="submit" method="post" action="/users/register-tutor/" enctype="multipart/form-data">Submit</button>
               </div>
             </form>
           </div>
