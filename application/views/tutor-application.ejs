@@ -67,8 +67,8 @@
     <div class="grid-item">
         <div class="form-container">
             <form>
-              <h1>Become A Tutor!</h1>
-
+              <h1><%=isTutor?"Welcome Back Tutor!":"Become a Tutor"%></h1>
+              <b><%=isTutor?"Submit again to update your info":""%></b>
               <b>Fields marked with * are required!</b>
               
               <label for="first-name">First Name *</label>
@@ -77,9 +77,12 @@
               <label for="last-name">Last Name *</label>
               <input type="text" id="last-name" name="last_name" required>
               
-              <label for="topic">Select Topic *</label>
+              <label for="topic">Subject *</label>
               <select id="topic" name="topic" required>
-                <option value="">--Please choose an option--</option>
+                <option value="">Select Subject</option>
+                <% topics.forEach(topic => { %>
+                    <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                <% }); %>
               </select>
               
               <label for="description">Description *</label>
@@ -94,8 +97,7 @@
               <p>It may take up to 24 hours to process your registration</p>
               
               <div class="form-actions">
-                <button type="reset">Clear</button>
-                <button type="submit">Apply!</button>
+                <button type="submit"><%=isTutor?"Submit":"Apply!"%></button>
               </div>
             </form>
           </div>

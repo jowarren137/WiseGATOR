@@ -164,7 +164,7 @@ router.get('/tutor-application/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('tutor-application', {  loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
+            res.render('tutor-application', {  isTutor: req.session.isTutor, loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
                 subject: req.query.subject });
         });
     });
