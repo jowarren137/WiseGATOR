@@ -3,8 +3,8 @@ const mysql = require('mysql');
 const db  = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
-  port: '3307',
-  password: '1234',
+  port: '3306',
+  password: 'GatorsTeam6!',
   database: 'gatorDB'
 });
 
