@@ -65,43 +65,48 @@
         </div>
         <% tutors.forEach((tutor, index) => { %>
             <div class="tutor-card">
-                <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="thumbnail">
-                <div class="tutor-info">
-                    <h3><%= tutor.name %></h3>
-                    <p>Subject ID: <%= tutor.subject_id %></p>
-                    <!-- TO DO: Add link that leads to CV/Video/Photo -->
-                </div>
-                <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
-                <div id="messagePopup<%= index %>" class="popup">
-                    <!-- Popup content -->
-                    <div class="popup-content">
-                        <span class="close" data-index="<%= index %>">&times;</span>
-                        <p>To: <%= tutor.name %></p> <!-- TO DO: Get name of tutor user is messaging-->
-                        <p>Enter your message: </p>
-                        <form action="/users/message/" method="post">
-                            <textarea id="messageText<%= index %>" name="messageText" rows="4" cols="50" placeholder="Type a message here..."></textarea>
-                            <input type="hidden" name="tutorId" value="<%= tutor.id %>">
-                            <button class="sendMsgBtn" data-index="<%= index %>">Send</button>
-                        </form>
+                <%if(tutor.isActive){%>
+                    <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="thumbnail">
+                    <div class="tutor-info">
+                        <h3><%= tutor.name %></h3>
+                        <p>Subject ID: <%= tutor.subject_id %></p>
+                        <!-- TO DO: Add link that leads to CV/Video/Photo -->
                     </div>
-                </div>
-                <div class="text-box">
-                    <%=tutor.description%>
-                </div>
-                <% if (tutor.flyer){%>
+                    <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                    <div id="messagePopup<%= index %>" class="popup">
+                        <!-- Popup content -->
+                        <div class="popup-content">
+                            <span class="close" data-index="<%= index %>">&times;</span>
+                            <p>To: <%= tutor.name %></p> <!-- TO DO: Get name of tutor user is messaging-->
+                            <p>Enter your message: </p>
+                            <form action="/users/message/" method="post">
+                                <textarea id="messageText<%= index %>" name="messageText" rows="4" cols="50" placeholder="Type a message here..."></textarea>
+                                <input type="hidden" name="tutorId" value="<%= tutor.id %>">
+                                <button class="sendMsgBtn" data-index="<%= index %>">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box">
+                        <%=tutor.description%>
+                    </div>
+                    <% if (tutor.flyer){%>
+                        
+                        <a href="../webpage/tutor-pictures/<%=tutor.flyer%>.pdf" target="_blank" name = "flyer">
+                            <img src="../webpage/tutor-pictures/flyer.png" alt="Flyer" class="thumbnail">
+                        </a>
                     
-                    <a href="../webpage/tutor-pictures/<%=tutor.flyer%>.pdf" target="_blank" name = "flyer">
-                        <img src="../webpage/tutor-pictures/flyer.png" alt="Flyer" class="thumbnail">
-                    </a>
-                
-                    <%}%>    
-                <% if (tutor.video){%>
+                        <%}%>    
+                    <% if (tutor.video){%>
+                        
+                        <a href="../webpage/tutor-pictures/<%=tutor.video%>.mp4" target="_blank" name = "video">
+                            <img src="../webpage/tutor-pictures/video.png" alt="Video" class="thumbnail">
+                        </a>
                     
-                    <a href="../webpage/tutor-pictures/<%=tutor.video%>.mp4" target="_blank" name = "video">
-                        <img src="../webpage/tutor-pictures/video.png" alt="Video" class="thumbnail">
-                    </a>
-                
-                    <%}%>  
+                        <%}%>  
+                <%}else{%>
+                    <h3><%= tutor.name %></h3>
+                    <p>Application pending</p>
+                    <%}%>
             </div>
         <% }); %>
     </div>

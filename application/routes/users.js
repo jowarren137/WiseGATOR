@@ -157,8 +157,8 @@ router.post('/register-tutor/', async function(req, res, next) {
             }
             
             
-            var[insertResult, _] = await pool.execute(`INSERT INTO tutors ( name, subject_id, description, flyer, picture, video, user_id) VALUE (?,?,?,?,?,?,?);`,
-                [nombre, topic, description, flyerName, photoName, videoName, (req.session.userId[0][0]).id]);
+            var[insertResult, _] = await pool.execute(`INSERT INTO tutors ( name, subject_id, description, flyer, picture, video, user_id, isActive) VALUE (?,?,?,?,?,?,?,?);`,
+                [nombre, topic, description, flyerName, photoName, videoName, (req.session.userId[0][0]).id, 0]);
             console.log(insertResult);
             res.redirect('/search-tutors/');
         });
