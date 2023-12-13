@@ -65,7 +65,6 @@
         </div>
         <% tutors.forEach((tutor, index) => { %>
             <div class="tutor-card" style="--animation-delay: <%= index * 0.09 %>s">
-                <%if(tutor.isActive){%>
                     <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="thumbnail">
                     <div class="tutor-info">
                         <h3><%= tutor.name %></h3>
@@ -103,10 +102,7 @@
                         </a>
                     
                         <%}%>  
-                <%}else{%>
-                    <h3><%= tutor.name %></h3>
-                    <p>Application pending</p>
-                    <%}%>
+               
             </div>
         <% }); %>
     </div>
