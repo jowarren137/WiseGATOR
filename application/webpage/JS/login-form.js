@@ -24,13 +24,16 @@ const setSuccess = () => {
     document.getElementById('error').innerText = 'Success:' 
 }
 
-// const isValidEmail = email => {
-//     // TO DO write code to ensure email is corrent and aligns with one in our db
-// }
+const isValidEmail = email => {
+    // Regular expression for a valid email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
 
-// const isValidPassword = password => {
-//     // TO DO write code to ensure password is correct and aligns with the password matched with the email
-// }
+const isValidPassword = password => {
+    // Password should be at least 8 characters long
+    return password.length >= 8;
+}
 
 const validateInputs = () => {
     const emailValue = email.value.trim()
@@ -39,17 +42,16 @@ const validateInputs = () => {
     document.getElementById('error').innerText = ""
     errorMessages.length = 0
 
-
-    if(emailValue == "" || emailValue == null){
+    if(isValidEmail){
         addError("Email is required")
-    // }else if (!isValidEmail(emailValue)){
-    //     addError("Email doesn't match, try again")
+    }else if (!isValidEmail(emailValue)){
+        addError("Email doesn't match, try again")
     }
 
-    if(passwordValue == "" || passwordValue == null){
+    if(isValidPassword){
         addError("Password is required")
-    // }else if(!isValidPassword(passwordValue)){
-    //     addError("Password doesnt match, try again")
+    }else if(!isValidPassword(passwordValue)){
+        addError("Password doesnt match, try again")
     }
 
     if (errorMessages.length > 0){
