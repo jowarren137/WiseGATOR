@@ -64,7 +64,7 @@
             <p><%= tutorsLen %> Search Results Returned</p> <!-- TO DO: Get total number of search results -->
         </div>
         <% tutors.forEach((tutor, index) => { %>
-            <div class="tutor-card">
+            <div class="tutor-card" style="--animation-delay: <%= index * 0.09 %>s">
                 <%if(tutor.isActive){%>
                     <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="thumbnail">
                     <div class="tutor-info">
