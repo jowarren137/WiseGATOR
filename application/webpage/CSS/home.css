@@ -1,28 +1,32 @@
+body {
+  overflow-x: hidden;
+  position: relative;
+}
 
 .main-container {
 display: grid;
 grid-template-columns: 1fr; 
 grid-template-rows: 1fr; 
 width: 100vw - 10px; 
-/* -10px to resolve horizontal scroll issue */
-height: 100vh;
+/* -10px caused by battle of the horizontal scroll issue */
+position: relative;
+min-height: 100vh;
 margin: 20px; 
 /* border: 2px solid black;  */
-margin-bottom: 20%;
+
 }
 
 .nested-grid {
 display: grid;
 grid-template-columns: repeat(1, 1fr); 
-grid-template-rows: 1.1fr 1fr; 
-/* Initially 5fr 1fr, causing issues with displaying content vertially */
+grid-template-rows: 1fr 1.9fr; 
 gap: 20px; 
 /* border: 2px solid black;  */
 }
 
-.nested-grid > div {
+/* .nested-grid > div {
 /* border: 1px solid black;  */
-}
+/* } */
 
 .home-container {
 display: grid;
@@ -43,7 +47,7 @@ font-size: 1.5rem;
 cursor: pointer; 
 border: none;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-background-color: rgb(163, 163, 163)
+background-color: #c3c7cb;
 }
 
 .text-button-container {
@@ -68,7 +72,7 @@ font-size: 2em;
 .text-button-container p {
   font-size: 18px;
   line-height: 1.2;
-  
+  padding-top: 15px;
 }
 
 #element {
@@ -83,7 +87,7 @@ font-size: 2em;
   vertical-align: text-bottom;
 }
 
-/* --------------  HERE IS TUTOR CARD CSS ON HOMEPAGE  ----------------- */
+/* -----------------  HERE IS TUTOR CARD CSS ON HOMEPAGE  ----------------- */
 
 .additional-info {
   background-color: white;
@@ -93,15 +97,24 @@ font-size: 2em;
 }
   
 .additional-info h2 {
-margin-top: 0; 
-text-align: center; 
+  margin-bottom: 10px;
+  text-align: center; 
+}
 
+.additional-info-cards-shadow {
+  padding: 40px;
+  border-radius: 8px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .additional-info-cards {
   display: flex;
   gap: 20px;
   justify-content: center;
+  margin-bottom: 40px;
+  padding: 20px;
 }
 
 .tutor-cards-container {
@@ -113,9 +126,9 @@ text-align: center;
 
 .tutor-card {
   max-width: 20rem;
-  background-color: rgb(228, 228, 228);
+  background-color: #f0f0f0d5;
   border-radius: 5px;
-  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .tutor-picture {
@@ -161,20 +174,250 @@ text-align: center;
   background-color:#61797a;
 }
 
+/* ----------------- Here is large information card on homepage styling ----------------- */
 
+/* This is styling for just info card tabs */
+.additional-info-infocard {
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin: 20px auto;
+  margin-top: 40px;
+  padding: 40px;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hidden-sm-screen {
+  display: none;
+}
+
+.info-dropdown {
+  background-color: #edf2f7;
+  border: 0;
+  border-bottom: 1px solid #a0aec0;
+  color: #4a5568;
+  font-size: 14px;
+  padding: 8px;
+  width: 100%;
+}
+
+.info-tabs {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.info-tab {
+  flex: 1;
+}
+
+.info-button {
+  background-color: #f0f0f0d5;
+  border: 0;
+  border-bottom: 1px solid #a0aec0;
+  color: #4a5568;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.info-button:hover {
+  background-color: #e2e8f0;
+}
+
+.info-content {
+  background-color: #f0f0f0d5 ;
+  border-top: 1px solid #b6cae5;
+  padding-top: 16px;
+  padding: 16px;
+}
+
+.info-panel.hidden {
+  display: none;
+}
+
+.info-tab.active-tab {
+  background-color: #e2e8f0;
+}
+
+/* Hidden class for small screens */
+@media (max-width: 640px) {
+  .hidden-sm-screen {
+      display: block;
+  }
+
+  .info-tabs {
+      display: none;
+  }
+
+  .info-tab {
+      display: none;
+  }
+
+  .info-content {
+      margin-top: 0;
+      padding-top: 0;
+  }
+}
+
+/* Statistics Content */
+.info-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+}
+
+.info-item {
+  text-align: center;
+  padding: 20px;
+}
+
+.info-label {
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.info-value {
+  font-size: 1.5rem;
+  color: #4a5568;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 640px) {
+  .info-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+/*  Services Content */
+.info-heading {
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+
+
+/* Media query for smaller screens */
+@media (max-width: 640px) {
+  .info-heading {
+      font-size: 1.25rem;
+  }
+}
+
+/* FAQ Content */
+.accordion-item .info-content {
+ display: none;
+}
+
+#accordion {
+  border-top: 1px solid #e2e8f0;
+  margin-top: 16px;
+}
+
+#accordion h2 {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  color: #2d3748;
+  text-align: left;
+}
+
+#accordion h2::after {
+  content: '\1F783'; /* down arrow */
+  float: right;
+}
+
+#accordion .accordion-item.active-info-panel h2::after {
+  content: '\1F781'; /* up arrow  */
+}
+
+#accordion .accordion-item .info-content.show-content {
+  display: block;
+}
+
+#accordion .info-content {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+#accordion .info-list {
+  padding-left: 0;
+}
+
+#accordion .info-list-item {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+#accordion .info-list-item::before {
+  content: '\2022'; /* Bullet point */
+  color: #4299e1;
+  font-size: 1.5rem;
+  margin-right: 8px;
+}
+
+#accordion .info-tab.active-tab {
+  background-color: #e2e8f0;
+}
+
+#accordion .accordion-item.active-info-panel .info-content {
+  display: block;
+}
+
+#accordion .accordion-item.inactive-info-panel .info-content {
+  display: none;
+}
+
+.competitive-analysis {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.competitive-analysis th, .competitive-analysis td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.competitive-analysis th {
+  background-color: #f2f2f2;
+}
+
+/* Center the table on the page */
+.competitive-analysis-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 640px) {
+  #accordion h2 {
+      font-size: 1.25rem;
+  }
+}
+
+/* ----------------- Homepage Footer ----------------- */
 
 .site-footer {
-  background-color: rgb(130, 154, 91);;
+  background-color: rgb(130, 154, 91);
   color: white;
   padding: 20px 0;
   font-size: 14px;
-  width: 100vw; /* viewport width */
-  position: relative; /* if needed */
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 99.5vw; /* viewport width, battled with horizontal scrolling this whole page just leave this number */
+  position: absolute; /* if needed */
+  height: 12%;
+}
 
+.site-footer-color {
+  background-color: rgb(130, 154, 91);
 }
 
 .footer-container {
@@ -216,7 +459,7 @@ text-align: center;
   }
 
   .footer-container div {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
   }
 }
 
@@ -227,5 +470,4 @@ text-align: center;
   margin-top: 20px;
   padding: 10px;
   background-color: #f2f2f2;
-  border-radius: 5px;
 }

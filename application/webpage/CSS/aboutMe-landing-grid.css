@@ -1,3 +1,7 @@
+.body {
+  overflow-y: hidden;
+}
+
 .aboutMe-landing-grid {
     height: 85vh;
   
