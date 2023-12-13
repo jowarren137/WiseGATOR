@@ -165,7 +165,7 @@ router.post('/register-tutor/', async function(req, res, next) {
     }
     else if(req.session.isTutor){
         //Handle update tutor info
-        res.redirect('/login-form/?error=Need to implement updates');
+        res.redirect('/login-form/?error=Already a tutor.');
     }
     else{
         //Handle saving form info while logging in
