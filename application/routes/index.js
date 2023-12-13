@@ -243,6 +243,7 @@ router.get('/register-form/', (req, res) => {
 router.get('/search-tutors/', (req, res) => {
     let sql = 'SELECT * FROM tutors';
     let queryData = [];
+    var activeTutors = [];
 
     if ((req.query.search || req.query.subject)) {
         sql += ' WHERE';
@@ -265,8 +266,14 @@ router.get('/search-tutors/', (req, res) => {
 
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
-            res.render('search-tutors', { loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
-                subject: req.query.subject, tutorsLen: results.length});
+            results.forEach((result) => { 
+                if (result.isActive)
+                {
+                    activeTutors.push(result);
+                }
+            })
+            res.render('search-tutors', { loggedIn: req.session.userId ? true : false, tutors: activeTutors, topics: subjects, name: req.query.search,
+                subject: req.query.subject, tutorsLen: activeTutors.length});
         });
     });
 });
