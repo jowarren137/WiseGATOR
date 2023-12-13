@@ -8,6 +8,7 @@
 
       gtag('config', 'G-N3SV9BXBFJ');
     </script>
+    <script src="../webpage/JS/search-tutors.js" defer></script>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/home.css"/> <!-- TO DO: Delete any navbar css -->
 </head>
@@ -88,6 +89,19 @@
                                     <div class="tutor-contact">
                                     </div>
                                     <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                                    <div id="messagePopup<%= index %>" class="popup">
+                                        <!-- Popup content -->
+                                        <div class="popup-content">
+                                            <span class="close" data-index="<%= index %>">&times;</span>
+                                            <p>To: <%= tutor.name %></p> <!-- TO DO: Get name of tutor user is messaging-->
+                                            <p>Enter your message: </p>
+                                            <form action="/users/message/" method="post">
+                                                <textarea id="messageText<%= index %>" name="messageText" rows="4" cols="50" placeholder="Type a message here..."></textarea>
+                                                <input type="hidden" name="tutorId" value="<%= tutor.id %>">
+                                                <button class="sendMsgBtn" data-index="<%= index %>">Send</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     
                                 </div>
                             <% } %>

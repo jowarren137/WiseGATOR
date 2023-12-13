@@ -95,7 +95,7 @@
     padding: 1px;
 }
 
-/* The Close Button */
+/* Close Button */
 .close {
     color: #c2c1c1;
     float: right;
@@ -123,4 +123,9 @@
 .sendMsgBtn:hover {
     background-color:  black;
     color: white;
+}
+
+.thumbnail {
+    width: 100px;  
+    height: auto;
 }

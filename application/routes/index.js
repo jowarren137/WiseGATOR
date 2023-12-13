@@ -265,7 +265,7 @@ router.get('/search-tutors/', (req, res) => {
         db.query(sql, queryData, (err, results) => {
             if (err) throw err;
             res.render('search-tutors', { loggedIn: req.session.userId ? true : false, tutors: results, topics: subjects, name: req.query.search,
-                subject: req.query.subject });
+                subject: req.query.subject, tutorsLen: results.length});
         });
     });
 });
