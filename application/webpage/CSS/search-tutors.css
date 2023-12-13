@@ -19,7 +19,7 @@
 .tutor-card {
     display: grid;
     grid-template-columns: auto 1fr auto; 
-    grid-template-rows: 5fr 1fr;
+    grid-template-rows: auto auto auto auto;
     gap: 10px;
     padding: 10px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -39,7 +39,8 @@
 }
 
 .messageBtn {
-    grid-row:2; /* moved for fitts law */
+    grid-row:4; /* moved for fitts law */
+    height: 40px;
     border: none;
     text-align: center;
     text-decoration: none;
@@ -131,11 +132,20 @@
 }
 
 .text-box {
-    border: 1px solid #ccc; /* light grey border */
-    padding: 10px;         /* spacing inside the box */
-    margin: 10px;          /* spacing outside the box */
-    width: 300px;          /* fixed width of the box */
-    height: auto;          /* height adjusts to content */
-    background-color: #f9f9f9; /* light background color */
-    border-radius: 5px;    /* rounded corners */
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 100% - 10% ; 
+    height: auto;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.tutor-card a[name="flyer"],
+.tutor-card a[name="video"] {
+    align-self: center;
+    grid-row: 2;
+    margin-right: 10px; /* Add margin between CV and Video links */
 }
