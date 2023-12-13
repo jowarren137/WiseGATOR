@@ -122,10 +122,13 @@ router.post('/register-tutor/', async function(req, res, next) {
 
         upload.fields([{name: 'video'}, {name: 'photo'}, {name: 'flyer'}])(req, res, async function (err) {
             if (err instanceof multer.MulterError) {
-                // A Multer error occurred when uploading.
+                // Check if the error is due to file size
+                if (err.code === 'LIMIT_FILE_SIZE') {
+                    // Re-render the registration page with an error message and the previously entered info
+                    return res.redirect('/tutor-application/?error=File too large. Please upload a file smaller than 10MB.');
+                }
                 return next(err);
             } else if (err) {
-                // An unknown error occurred when uploading.
                 return next(err);
             }
 

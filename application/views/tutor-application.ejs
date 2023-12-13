@@ -70,7 +70,11 @@
               <h1><%=isTutor?"Welcome Back Tutor!":"Become a Tutor"%></h1>
               <b><%=isTutor?"Submit again to update your info":""%></b>
               <b>Fields marked with * are required!</b>
-              
+              <% if (error) { %>
+                <div class="error-message">
+                    <%= error %>
+                </div>
+            <% } %>
               <label for="first-name">First Name *</label>
               <input type="text" id="first-name" name="first_name" required>
               
@@ -110,5 +114,6 @@
     <div></div>
     <!-- Add more grid items if needed -->
 </div>
+
 </body>
 </html>
