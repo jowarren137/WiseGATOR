@@ -34,7 +34,13 @@
     animation-fill-mode: both;
     animation-delay: var(--animation-delay);
 }
-
+.disclaimer {
+    background-color: #f8f8f8; /* Light grey background */
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #333; /* Darker text for readability */
+}
 
 
 
