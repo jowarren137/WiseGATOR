@@ -65,7 +65,8 @@
         </div>
         
         <% tutors.forEach((tutor, index) => { %>
-            <div class="tutor-card" data-index="<%= index %>">
+            <div class="tutor-card">
+                <div class="tutor-card" style="--animation-delay: <%= index * 0.09 %>s"></div>
                 <%if(tutor.isActive){%>
                     <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="thumbnail">
                     <div class="tutor-info">
