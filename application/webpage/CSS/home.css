@@ -104,6 +104,7 @@ font-size: 2em;
 .additional-info-cards-shadow {
   padding: 40px;
   border-radius: 8px;
+  border-top: 1px solid #b6cae5;
   margin: 20px auto;
   width: 80%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
