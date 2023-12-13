@@ -85,6 +85,20 @@
                         </form>
                     </div>
                 </div>
+                <% if (tutor.flyer){%>
+                    
+                    <a href="../webpage/tutor-pictures/<%=tutor.flyer%>.pdf" target="_blank" name = "flyer">
+                        <img src="../webpage/tutor-pictures/flyer.png" alt="Flyer" class="thumbnail">
+                    </a>
+                
+                    <%}%>    
+                <% if (tutor.video){%>
+                    
+                    <a href="../webpage/tutor-pictures/<%=tutor.video%>.mp4" target="_blank" name = "video">
+                        <img src="../webpage/tutor-pictures/video.png" alt="Video" class="thumbnail">
+                    </a>
+                
+                    <%}%>  
             </div>
         <% }); %>
     </div>
