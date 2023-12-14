@@ -1,62 +1,450 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/login-form.css"/>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/home.css"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3SV9BXBFJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <style>
-       
-    </style>
+      gtag('config', 'G-N3SV9BXBFJ');
+    </script>
+    <script src="../webpage/JS/search-tutors.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/home.css"/> <!-- TO DO: Delete any navbar css -->
 </head>
 
 <body>
     <header class="navbar">
-            <div class="left">
-                <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-                <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+        <div class="left">
+            <a href="/" class="home-link">
+                <img src="../webpage/tutor-pictures/GATORlogo.png" width="48" alt="Logo" class="Logo">
+                <span class="title" style="color: #efebef; padding-right: 10px; padding-left: 10px; font-size: 20px">WiseGATOR</span>
+            </a>
+        </div>
+        <div class="search-container">
+            <form class="search-form" action="/search-tutors" method="GET">
+                <select name="subject">
+                    <option value="">Select Topic</option>
+                    <% topics.forEach(topic => { %>
+                        <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                    <% }); %>
+                </select>
+
+                <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
+                
+                <button type="submit">Search</button>
+            </form>
+        </div>  
+        <div class="right">
+            <div class="navbar-buttons">
+                <a href="/about-us/"><button>About Us</button></a>
+                <a href="/tutor-application/"><button>Become a Tutor</button></a>
+
+                <!-- TO DO: If logged in dashboard else login form -->
+                <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
+                <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
+                    <form action="/users/logout/" method="post">
+                      <button type="submit">Logout</button>
+                    </form>
+                    <% } else { %>
+                      <a href="/login-form/"><button>Log In</button></a>
+                  <% } %>
+
+                <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->
             </div>
-            <div class="search-container">
-                <form class="search-form" action="/search-tutors" method="GET">
-                    <select name="subject">
-                        <option value="">Select Topic</option>
-                        <% topics.forEach(topic => { %>
-                            <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
-                        <% }); %>
-                    </select>
-        
-                    <input type="text" name="search" value="<%= typeof name !== 'undefined' ? name : '' %>" placeholder="Search by name" maxlength="40">
-                    
-                    <button type="submit">Search</button>
-                </form>
-            </div>  
-            <div class="right">
-                <div class="navbar-buttons">
-                    <a href="/"><button>Home</button></a>
-                    <a href="/about-us/"><button>About Us</button></a>
-                    <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
-                    <a href="/tutor-application/"><button>Become a Tutor</button></a>
-                    <a href="/login-form/"><button>Sign In</button></a>
-                </div>
-            </div>
+        </div>
     </header>
+
     <div class="main-container">
         <div class="nested-grid">
  
           <div class="text-button-container">
   
-              <span id="element" class="typed-cursor"></span>
-              <div class="home-container">
-  
-                  <button class="button find-tutor" onclick="location.href='/search-tutors';">Find a Tutor</button>
-                  <button class="button become-tutor" onclick="location.href='/tutor-application/';">Become a Tutor</button>
-                </div>
-          </div>
-          
-          <div class="additional-info">
-            <h2>Recently Approved Tutors</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-          </div>
+            <span id="element" class="typed-cursor"></span>
+            <p>Find SF State exclusive tutors or offer your expertise. Navigate with the buttons below or the navbar above. Search with Confidence.</p>
+
+            <div class="home-container">
+
+                <button class="button find-tutor" onclick="location.href='/search-tutors';">Find a Tutor</button>
+                <button class="button become-tutor" onclick="location.href='/tutor-application/';">Become a Tutor</button>
+
+            </div>
         </div>
-      </div>
+          
+        <div class="additional-info">
+            <div class="additional-info-cards-shadow">
+            <h2>Approved Tutors</h2> 
+                <div class="additional-info-cards">  
+                    <div class="tutor-cards-container">
+                        <% tutors.forEach((tutor, index) => { %>
+                            <% if (index < 3) { %>
+                                <div class="tutor-card">
+                                    <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="tutor-picture">
+                                    <div class="tutor-info">
+                                        <h3><%= tutor.name %></h3>
+                                        <p>Topic: <%= tutor.subject_id %></p>
+                                    </div>
+                                    <div class="tutor-contact">
+                                    </div>
+                                    <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                                    <div id="messagePopup<%= index %>" class="popup">
+                                        <!-- Popup content -->
+                                        <div class="popup-content">
+                                            <span class="close" data-index="<%= index %>">&times;</span>
+                                            <p>To: <%= tutor.name %></p> <!-- TO DO: Get name of tutor user is messaging-->
+                                            <p>Enter your message: </p>
+                                            <form action="/users/message/" method="post">
+                                                <textarea id="messageText<%= index %>" name="messageText" rows="4" cols="50" placeholder="Type a message here..."></textarea>
+                                                <input type="hidden" name="tutorId" value="<%= tutor.id %>">
+                                                <button class="sendMsgBtn" data-index="<%= index %>">Send</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            <% } %>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="additional-info-infocard">
+                <h2> Learn more about WiseGATOR </h2>
+                <div class="hidden-sm-screen">
+                    <label for="infoTabs" class="sr-only">Select tab</label>
+                    <select id="infoTabs" class="info-dropdown">
+                        <option>Statistics</option>
+                        <option>Services</option>
+                        <option>FAQ</option>
+                    </select>
+                </div>
+                <ul class="hidden info-tabs" id="fullWidthTab" data-tabs-toggle="#fullWidthTabContent" role="tablist">
+                    <li class="info-tab">
+                        <button id="stats-tab" data-tabs-target="#stats" type="button" role="tab" aria-controls="stats" aria-selected="true" class="info-button active-tab">Statistics</button>
+                    </li>
+                    <li class="info-tab">
+                        <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="false" class="info-button">Services</button>
+                    </li>
+                    <li class="info-tab">
+                        <button id="faq-tab" data-tabs-target="#faq" type="button" role="tab" aria-controls="faq" aria-selected="false" class="info-button">FAQ</button>
+                    </li>
+                </ul>
+                <div id="fullWidthTabContent" class="info-content">
+                    <div class="hidden info-panel" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+                        <dl class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Public repositories</div>
+                                <div class="info-value">1</div>
+                            </div>
+                            <div class="info-item">
+                                 <div class="info-label">Developers</div>
+                                <div class="info-value">6</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Open source projects</div>
+                                <div class="info-value">1</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Available Subjects</div>
+                                <div class="info-value">90+</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Website Availability</div>
+                                <div class="info-value">24/7</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Customer Satisfaction Rate</div>
+                                <div class="info-value">10/10</div>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="hidden info-panel" id="about" role="tabpanel" aria-labelledby="about-tab">
+                        <h2 class="info-heading">We invest in your potential</h2><br>
+                        <ul class="info-list">
+                            <li class="info-list-item">Effortlessly explore our platform without the need for an account, ensuring accessibility for all users.</li><br>
+                            <li class="info-list-item">Discover unique services tailored exclusively for SF State students</li>  <br>
+                            <li class="info-list-item">Select your preferred tutors with our accessible search bar featured on every pages navigation bar.</li><br>
+                            <li class="info-list-item">Empower logged-in users with dynamic messaging access throughout our site and incoming message access with an intuitive dashboard</li><br>
+                        </ul>
+                    </div>
+                    <div class="hidden info-panel" id="faq" role="tabpanel" aria-labelledby="faq-tab">
+                        <div id="accordion" data-accordion="collapse" data-active-classes="active-info-panel" data-inactive-classes="inactive-info-panel">
+                            <div class="accordion-item">
+                                <h2>What is WiseGator?</h2>
+                                <div class="info-content">
+                                    <p>WiseGATOR is a brand new SFSU Guidance and Tutoring Outreach Resource. It allows SFSU students to find SFSU tutors relevant to their coursework, 
+                                        SFSU students often depend on one another to get assistance with their classes and homework. This application will bridge the gap between students
+                                        in need of tutoring services from experienced students that can offer specialized help.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2>What platforms can I use WiseGator on?</h2>
+                                <div class="info-content">
+                                    <p>WiseGator seamlessly operates across diverse computing ecosystems, encompassing both mobile and desktop platforms on Mac OS and Windows operating systems. 
+                                        The platform ensures compatibility with a spectrum of contemporary web browsers, guaranteeing a unified experience for users on Google Chrome, Mozilla Firefox, 
+                                        Safari, Microsoft Edge, and more. Notably, while WiseGator does not currently offer dedicated applications for iOS or Android, users can effortlessly access its
+                                         features through the web browsers native to these mobile platforms. This strategic approach prioritizes accessibility and compatibility, 
+                                         enabling users to harness the full potential of WiseGator's capabilities regardless of their preferred device or operating system.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2>What are the differences between wiseGator and the competition?</h2>
+                                <div class="info-content">
+                                    <p>
+                                        WiseGator stands apart from the competition through a strategic blend of insightful analysis and a dynamic team of six computer scientists from San Francisco State University. 
+                                        Fueled by CEO Petkovic's and CTO Souza's backing from the College of Science & Engineering, the WiseGator team combines their strong background in Web and Software Development to shape a 
+                                        platform that addresses the unique needs of SFSU students. Our competitive edge, as highlighted in the analysis against platforms like SFSU Navigator, OLA Tutoring, Wyzant,
+                                        and Gator Wise, reflects our commitment to providing a distinct and enriching educational experience. As students ourselves, we channel our talents to create a positive impact 
+                                        on our peers and the broader SFSU community. Implementing user friendly practices like lazy login, we aim to make WiseGator an indispensable resource for students and alumni alike.</p>
+                                    <ul class="competitive-analysis">
+                                        <table class="c24">
+                                            <tr class="c4">
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Feature</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14 c23" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Gator Wise</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">SFSU Navigator </span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">OLA Tutoring </span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Wyzant </span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="c4">
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Tutors attend SFSU</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14 c19" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">++</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c10">+</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">-</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="c4">
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Search by SFSU Class</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14 c19" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">++</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">+</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c9 c35">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c9 c35">-</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="c4">
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Ease of registering for tutors</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14 c19" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c10">++</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c10">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c10">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">+</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="c4">
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Lazy Login</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14 c19" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">++</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">+</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">+</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="c4">
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Browse all tutors</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14 c19" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">++</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c0">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c0">+</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">+</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr class="c16">
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c7">
+                                                        <span class="c0">Search tutors by class</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14 c19" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">++</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">-</span>
+                                                    </p>
+                                                </td>
+                                                <td class="c14" colspan="1" rowspan="1">
+                                                    <p class="c6">
+                                                        <span class="c5">-</span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>  
+    </div>
+
+    </div>
+        <footer class="site-footer">
+            <div class="site-footer-color">
+                <div class="footer-container">
+                    <div class="footer-about">
+                        <h3>Company Name</h3>
+                        <p>Description of the company or mission statement. This section can be a brief introduction to your company.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <p>123 Street Name, City, Country</p>
+                        <p>Phone: (123) 456-7890</p>
+                        <p>Email: info@example.com</p>
+                    </div>
+                    <div class="footer-social">
+                        <h3>Follow Us</h3>
+                        <p>
+                            <!-- Icons or links to social media platforms -->
+                            <a href="#">Facebook</a> | 
+                            <a href="#">Twitter</a> | 
+                            <a href="#">Instagram</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2023 Company Name. All Rights Reserved.</p>
+                </div>
+                <div class="disclaimer">
+                    <p>
+                        This website is a student-created project for <strong>San Francisco State University (SFSU)</strong>. It is not officially affiliated with, endorsed by, or operated by SFSU. The content, views, and opinions expressed on this website are solely those of the student creators and do not reflect the official policy or position of San Francisco State University or any of its affiliates.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
 
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
@@ -67,5 +455,51 @@ var typed = new Typed('#element', {
   showCursor: false, // Ensure the cursor is shown
   cursorChar: '|', // Default cursor character
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('[data-tabs-target]');
+    const tabContents = document.querySelectorAll('.info-panel');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-tabs-target');
+
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.querySelector(target).classList.remove('hidden');
+
+            // Remove 'active-tab' class from all buttons
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active-tab');
+            });
+
+            // Add 'active-tab' class to the clicked button
+            button.classList.add('active-tab');
+        });
+    });
+
+    // Trigger a click on the "Statistics" tab to show the initial content
+    document.querySelector('[data-tabs-target="#stats"]').click();
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+
+    accordionItems.forEach(item => {
+        const h2 = item.querySelector('h2');
+        const content = item.querySelector('.info-content');
+
+        h2.addEventListener('click', () => {
+            // Toggle the 'active-info-panel' class
+            item.classList.toggle('active-info-panel');
+
+            // Toggle the visibility of the content using a CSS class
+            content.classList.toggle('show-content');
+        });
+    });
+});
 </script>
+
+
 </body>

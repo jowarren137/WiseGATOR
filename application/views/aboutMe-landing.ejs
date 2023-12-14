@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3SV9BXBFJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N3SV9BXBFJ');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us</title>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/aboutMe-landing-base.css"/>
     <link rel="stylesheet" type="text/css" href="../webpage/CSS/aboutMe-landing-grid.css"/>
   </head>
@@ -12,8 +21,10 @@
     
     <header class="navbar">
       <div class="left">
-          <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-          <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+        <a href="/" class="home-link">
+          <img src="../webpage/tutor-pictures/GATORlogo.png" width="48" alt="Logo" class="Logo">
+          <span class="title" style="color: #efebef; padding-right: 10px; padding-left: 10px;">WiseGATOR</span>
+      </a> 
       </div>
       <div class="search-container">
           <form class="search-form" action="/search-tutors" method="GET">
@@ -31,11 +42,17 @@
       </div>  
       <div class="right">
           <div class="navbar-buttons">
-              <a href="/"><button>Home</button></a>
               <a href="/about-us/"><button>About Us</button></a>
               <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
               <a href="/tutor-application/"><button>Become a Tutor</button></a>
-              <a href="/login-form/"><button>Sign In</button></a>
+              <% if (loggedIn) { %>
+                <a href="/dashboard/"><button>Dashboard</button></a>
+                <form action="/users/logout/" method="post">
+                  <button type="submit">Logout</button>
+                </form>
+                <% } else { %>
+                  <a href="/login-form/"><button>Log In</button></a>
+              <% } %>
           </div>
       </div>
   </header>

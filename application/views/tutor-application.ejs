@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3SV9BXBFJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N3SV9BXBFJ');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Tutor Application Form</title>
-    <script src="./JS/tutor-application.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/tutor-application.css"/>
+    <script src="../webpage/JS/tutor-application.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/tutor-application.css"/> <!-- TO DO: Delete navbar css -->
 </head>
 <header class="navbar">
     <div class="left">
-        <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-        <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+        <a href="/" class="home-link">
+            <img src="../webpage/tutor-pictures/GATORlogo.png" width="48" alt="Logo" class="Logo">
+            <span class="title" style="color: #efebef; padding-right: 10px; padding-left: 10px;">WiseGATOR</span>
+        </a>
     </div>
     <div class="search-container">
         <form class="search-form" action="/search-tutors" method="GET">
@@ -29,51 +41,72 @@
     </div>  
     <div class="right">
         <div class="navbar-buttons">
-            <a href="/"><button>Home</button></a>
             <a href="/about-us/"><button>About Us</button></a>
-            <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
             <a href="/tutor-application/"><button>Become a Tutor</button></a>
-            <a href="/login-form/"><button>Sign In</button></a>
+
+            <!-- TO DO: If logged in dashboard else login form -->
+            <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
+            <% if (loggedIn) { %>
+              <a href="/dashboard/"><button>Dashboard</button></a>
+              <form action="/users/logout/" method="post">
+                <button type="submit">Logout</button>
+              </form>
+              <% } else { %>
+                <a href="/login-form/"><button>Log In</button></a>
+            <% } %>
+
+            <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
+            <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->
         </div>
     </div>
 </header>
-
 <body>
   
 <div class="main-container">
     <div></div>
     <div class="grid-item">
         <div class="form-container">
-            <form>
-              <h1>Become A Tutor!</h1>
-
+            <form method="post" action="/users/register-tutor/" enctype="multipart/form-data">
+              <h1><%=isTutor?"Welcome Back Tutor!":"Become a Tutor"%></h1>
+              <b><%=isTutor?"Submit again to update your info":""%></b>
               <b>Fields marked with * are required!</b>
-              
+              <% if (error) { %>
+                <div class="error-message">
+                    <%= error %>
+                </div>
+            <% } %>
               <label for="first-name">First Name *</label>
               <input type="text" id="first-name" name="first_name" required>
               
               <label for="last-name">Last Name *</label>
               <input type="text" id="last-name" name="last_name" required>
               
-              <label for="topic">Select Topic *</label>
+              <label for="topic">Subject *</label>
               <select id="topic" name="topic" required>
-                <option value="">--Please choose an option--</option>
+                <option value="">Select Subject</option>
+                <% topics.forEach(topic => { %>
+                    <option value="<%= topic.subject %>" <%= (typeof subject !== 'undefined' && subject === topic.subject) ? 'selected' : '' %>><%= topic.subject %></option>
+                <% }); %>
               </select>
               
               <label for="description">Description *</label>
               <textarea id="description" name="description" required placeholder="Please tell students about your experience, classes, etc."></textarea>
               
               <div class="media-upload">
-                <button type="button">Add a Video</button>
-                <button type="button">Add a Photo</button>
-                <button type="button">Add a CV/Flyer</button>
+                <label for="photo">Add a Photo *(.png only)*</label>
+                <input type="file" id="photo" name="photo" accept=".png">
+                
+                <label for="flyer">Add a CV/Flyer *(.pdf only)*</label>
+                <input type="file" id="flyer" name="flyer" accept=".pdf">
+                
+                <label for="video">Add a Video *(.mp4 only)*</label>
+                <input type="file" id="video" name="video" accept=".mp4">
               </div>
               
               <p>It may take up to 24 hours to process your registration</p>
               
               <div class="form-actions">
-                <button type="reset">Clear</button>
-                <button type="submit">Apply!</button>
+                <button type="submit">Submit</button>
               </div>
             </form>
           </div>
@@ -81,5 +114,6 @@
     <div></div>
     <!-- Add more grid items if needed -->
 </div>
+
 </body>
 </html>

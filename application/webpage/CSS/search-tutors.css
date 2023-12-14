@@ -1,0 +1,168 @@
+.tutor-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between cards */
+    max-width: 50%;
+    margin: auto; 
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color:rgb(243, 213, 176);
+}
+
+.tutor-result-count {
+    padding-top: 10px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+.tutor-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto; 
+    grid-template-rows: auto auto auto auto;
+    gap: 10px;
+    padding: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: white;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: var(--animation-delay);
+}
+.disclaimer {
+    background-color: #f8f8f8; /* Light grey background */
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8em;
+    color: #333; /* Darker text for readability */
+}
+
+
+
+.tutor-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.tutor-info h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.messageBtn {
+    grid-row:4; /* moved for fitts law */
+    height: 40px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    Padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;                                                 
+    color: #fff;
+    background-color:#76adae;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px; 
+}
+
+.messageBtn:hover{
+    background-color:#61797a;
+}
+
+/* Popup box style */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Popup content */
+.popup-content {
+    background-color: #526566;
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    width: 30%;
+}
+
+.popup-content textarea {
+    width: 100%; 
+    height: 100px; 
+    resize: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.popup-content p {
+    color: white;
+    padding: 1px;
+}
+
+/* Close Button */
+.close {
+    color: #c2c1c1;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sendMsgBtn {                                                 
+    background-color: white; 
+    color: black; 
+    padding: 8px 16px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px; 
+    border: none;
+    cursor: pointer;
+}
+
+.sendMsgBtn:hover {
+    background-color:  black;
+    color: white;
+}
+
+.thumbnail {
+    width: 100px;  
+    height: auto;
+}
+
+.text-box {
+    grid-column: 1 / span 2;
+    grid-row: 3;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 100% - 10% ; 
+    height: auto;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.tutor-card a[name="flyer"],
+.tutor-card a[name="video"] {
+    align-self: center;
+    grid-row: 2;
+    margin-right: 10px; /* Add margin between CV and Video links */
+}

@@ -4,9 +4,10 @@ const db  = mysql.createConnection({
   host: '127.0.0.1',
   user: 'root',
   port: '3306',
-  password: '',
+  password: 'GatorsTeam6!',
   database: 'gatorDB'
 });
+
 db.connect((err) => {
   if (err)
       {

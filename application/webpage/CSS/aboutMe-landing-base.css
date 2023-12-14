@@ -2,9 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
 
 body {
-    background: #fff;
     color: #fff;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;    
+    overflow: hidden;
+}
+
+.aboutMe-landing-grid {
+    margin: 0;
+    padding: 0;
+    transform: scale(0.92);
 }
 
 .card {
@@ -15,7 +21,7 @@ body {
     background: #353535;
     font-size: 3rem;
     color: #fff;
-    box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+    box-shadow: rgba(58, 75, 113, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
     height: 100%;
     width: 100%;
     border-radius: 4px;

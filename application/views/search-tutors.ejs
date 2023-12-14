@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3SV9BXBFJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N3SV9BXBFJ');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/dashboard.css"/>
-    <style>
-        body {
-            background-color: DimGrey;
-            color: white; /* Apply white color to the text */
-        }
-
-        input, select, button {
-            color: black; /* Text color */
-            background-color: white; /* Background color */
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/search-tutors.css"/> 
+    <script src="../webpage/JS/search-tutors.js" defer></script>
     <title>Tutor Search</title>
 </head>
 <body>
     <header class="navbar">
         <div class="left">
-            <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-            <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+            <a href="/" class="home-link">
+                <img src="../webpage/tutor-pictures/GATORlogo.png" width="48" alt="Logo" class="Logo">
+                <span class="title" style="color: #efebef; padding-right: 10px; padding-left: 10px;">WiseGATOR</span>
+            </a>
         </div>
         <div class="search-container">
             <form class="search-form" action="/search-tutors" method="GET">
@@ -39,30 +41,76 @@
         </div>  
         <div class="right">
             <div class="navbar-buttons">
-                <a href="/"><button>Home</button></a>
                 <a href="/about-us/"><button>About Us</button></a>
-                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
                 <a href="/tutor-application/"><button>Become a Tutor</button></a>
-                <a href="/login-form/"><button>Sign In</button></a>
+
+                <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
+                <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
+                    <form action="/users/logout/" method="post">
+                      <button type="submit">Logout</button>
+                    </form>
+                    <% } else { %>
+                      <a href="/login-form/"><button>Log In</button></a>
+                  <% } %>
+
+                <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->
             </div>
         </div>
     </header>
-
-    
+    <div class="disclaimer">
+        <p>Note: Tutors will respond to your queries via your school email address.</p>
+    </div>
     <div class="tutor-cards-container">
-        <% tutors.forEach(tutor => { %>
-            <div class="tutor-card">
-                <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="tutor-picture">
-                <div class="tutor-info">
-                    <h3><%= tutor.name %></h3>
-                    <p>Subject ID: <%= tutor.subject_id %></p>
-                </div>
-                <div class="tutor-contact">
-                    <button type="button">Message</button>
-                </div>
+        <div class="tutor-result-count">
+            <p><%= tutorsLen %> Search Results Returned</p> <!-- TO DO: Get total number of search results -->
+        </div>
+        <% tutors.forEach((tutor, index) => { %>
+            <div class="tutor-card" style="--animation-delay: <%= index * 0.09 %>s">
+                    <img src="../webpage/tutor-pictures/<%= tutor.picture %>.png" alt="<%= tutor.name %>" class="thumbnail">
+                    <div class="tutor-info">
+                        <h3><%= tutor.name %></h3>
+                        <p>Subject ID: <%= tutor.subject_id %></p>
+                        <!-- TO DO: Add link that leads to CV/Video/Photo -->
+                    </div>
+                    <button class=messageBtn id="messageBtn<%= index %>">Message</button> 
+                    <div id="messagePopup<%= index %>" class="popup">
+                        <!-- Popup content -->
+                        <div class="popup-content">
+                            <span class="close" data-index="<%= index %>">&times;</span>
+                            <p>To: <%= tutor.name %></p> <!-- TO DO: Get name of tutor user is messaging-->
+                            <p>Enter your message: </p>
+                            <form action="/users/message/" method="post">
+                                <textarea id="messageText<%= index %>" name="messageText" rows="4" cols="50" placeholder="Type a message here..."></textarea>
+                                <input type="hidden" name="tutorId" value="<%= tutor.id %>">
+                                <button class="sendMsgBtn" data-index="<%= index %>">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-box">
+                        <%=tutor.description%>
+                    </div>
+                    <% if (tutor.flyer){%>
+                        
+                        <a href="../webpage/tutor-pictures/<%=tutor.flyer%>.pdf" target="_blank" name = "flyer">
+                            <img src="../webpage/tutor-pictures/flyer.png" alt="Flyer" class="thumbnail">
+                        </a>
+                    
+                        <%}%>    
+                    <% if (tutor.video){%>
+                        
+                        <a href="../webpage/tutor-pictures/<%=tutor.video%>.mp4" target="_blank" name = "video">
+                            <img src="../webpage/tutor-pictures/video.png" alt="Video" class="thumbnail">
+                        </a>
+                    
+                        <%}%>  
+               
             </div>
         <% }); %>
     </div>
+
+
 
     <!-- <ul>
         <% tutors.forEach(tutor => { %>

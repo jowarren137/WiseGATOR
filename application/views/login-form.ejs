@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3SV9BXBFJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N3SV9BXBFJ');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/login-form.css"/>
-    <!-- <script src="./JS/login-form.js" defer></script> -->
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/login-form.css"/> <!-- TO DO: Delete any navbar css -->
+    <script src="../webpage/JS/login-form.js" defer></script>
 </head>
 <body>
     <header class="navbar">
         <div class="left">
-            <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-            <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+            <a href="/" class="home-link">
+                <img src="../webpage/tutor-pictures/GATORlogo.png" width="48" alt="Logo" class="Logo">
+                <span class="title" style="color: #efebef; padding-right: 10px; padding-left: 10px;">WiseGATOR</span>
+            </a>
         </div>
         <div class="search-container">
             <form class="search-form" action="/search-tutors" method="GET">
@@ -30,23 +42,40 @@
         </div>  
         <div class="right">
             <div class="navbar-buttons">
-                <a href="/"><button>Home</button></a>
                 <a href="/about-us/"><button>About Us</button></a>
-                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
                 <a href="/tutor-application/"><button>Become a Tutor</button></a>
-                <a href="/login-form/"><button>Sign In</button></a>
+
+                <!-- TO DO: If logged in dashboard else login form -->
+                <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
+                <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
+                    <form action="/users/logout/" method="post">
+                      <button type="submit">Logout</button>
+                    </form>
+                    <% } else { %>
+                      <a href="/login-form/"><button>Log In</button></a>
+                  <% } %>
+
+                <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->
             </div>
         </div>
     </header>
     <main class="content">
-        <form class="login-form" method="post" >
+        <form class="login-form" method="post" action="/users/login/">
             <h1>Login</h1>
-    
+
+            <% if (error) { %>
+                <div class="error-message">
+                    <%= error %>
+                </div>
+            <% } %>
+
             <label for="email">SFSU Email</label> 
-            <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu"> <br>
+            <input type="email" id="email" name = "email" required placeholder="e.g. 123456789@sfsu.edu"> <br>
     
             <label for="password">Enter Password</label> 
-            <input type="password" id="password" placeholder="Password"> <br>
+            <input type="password" id="password" name = "password" required placeholder="Password"> <br>
     
             <p><a href="">Forgot password? </a></p> <!--Dummy link, no reroute here-->
             <p><a href="/register-form/">Don't have an account?</a></p> <!--TO DO: add link to register page-->
@@ -55,10 +84,11 @@
     
         </form>
     </main>
+
     <!-- Temporary Navigation to hardcoded dashboard -->
-    <div style="display: grid; place-items: center;">
+    <!-- <div style="display: grid; place-items: center;">
         <a href="/dashboard/"><button style="width: 100%; padding: 10px;">Click For Temporary Dashboard Access</button></a>
-    </div>
+    </div> -->
     <!-- Temp Error Handling (if individual messages wrap input and label in div 'input-control')-->
     <div class ="input-control">
         <div class="error" id="error"></div>

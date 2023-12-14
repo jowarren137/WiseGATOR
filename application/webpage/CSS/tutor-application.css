@@ -13,159 +13,35 @@ body {
 }
 
 /* CSS for Navbar using CSS Grid */
-@media only screen and (max-width: 1000px) {
-    .title {
-        display: none;
-    }
-}
 
-.navbar {
-    font-family: "Lato", sans-serif;
-    background-color: rgb(130, 154, 91);
-    padding: 10px 10px;
-
-    display: grid;
-    grid-template-columns: auto minmax(auto, 1fr) auto; 
-    grid-template-rows: 1fr;
-    align-items: center;
-}
-
-.left, .right {
-    display: flex;
-    align-items: center;
-}
-
-.left {
-    justify-self: flex-start;
-}
-
-.right {
-    justify-self: flex-end;
-}
-
-.Logo {
-    border-radius: 5px;
-}
-
-.navbar a {
-    color: black;
-    text-decoration: none;
-    font-size: 20px;
-    margin: 0 10px;
-}
-
-.search-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    max-width: 1000px;
-    min-width: 100px;
-    margin-left: 15px;
-    margin-right: 15px;
-    min-width: none;
-    border: 2px solid black;
-    border-radius: 5px;
-    overflow: hidden;
-    white-space: nowrap;
-    box-sizing: border-box;
-}
-
-.search-form {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-}
-
-.search-container select,
-.search-container input,
-.search-container button {
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-}
-
-.search-container select {
-    width: 120px;
-    padding: 10px;
-    margin: 0;
-    background-color: rgb(186, 186, 186);
-    color: #616467;
-}
-
-.search-container select option {
-    background-color: #fff;
-    color: #616467;
-}
-
-.search-container input {
-    width: calc(140% - 20px);
-    padding: 10px;
-    
-}
-
-.search-container button {
-    padding: 10px;
-    cursor: pointer;
-    background-color: rgb(186, 186, 186);
-    color: #616467;
-    transition: background-color 0.3s, color 0.3s; 
-    margin: 0;
-}
-
-.search-container button:hover {
-    background-color: black;
-    color: #fff;
-}
-
-
-.navbar-buttons {
-    display: grid;
-    align-items: center;
-    grid-auto-flow: column; 
-}
-
-.navbar-buttons button {
-    display: inline-block;
-    padding: 10px 10px;
-    font-size: 14px;
-    border: 2px solid black;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-    color: black;
-    background-color: transparent;
-    margin: 0;
-    white-space: nowrap;
-}
-
-.navbar-buttons button:hover {
-    color: white;
-    background-color: black;
-}
 
 
 /* ------------------------------------- */
 
 .main-container {
+    font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     display: grid;
     grid-template-columns: 1fr 3fr 1fr; 
     gap: 10px;
-    border: 2px solid black;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 20px; 
     min-height: 100vh; 
 }
 
 .grid-item {
     padding: 20px; 
-    border: 1px solid grey; 
+    background-color: rgb(212, 211, 211);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 /* ---------------------------------------------------------------------- */
 
 .form-container {
     display: grid;
     height: 100vh;
-    border: 2px solid black;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     padding: 20px;
 }
 
@@ -193,10 +69,30 @@ justify-content: space-between;
 }
 
 .form-actions button {
-/* Additional styling for buttons if needed */
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 }
+
+.form-actions button:hover {
+    background-color: black; 
+    color: white; 
+
+}
+
 
 /* Tutor Application Description Field */
 #description {
     font-family: "Lato", sans-serif;
+    resize: none;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* Aligns lables to bottom of their grid or above their input field*/
+form label, b{
+    align-self: end;
+}
+.error-message {
+    color: red;
+    margin-bottom: 10px;
 }

@@ -5,11 +5,28 @@ const port = 3000;
 const usersRouter = require("./routes/users.js");
 const indexRouter = require("./routes/index.js");
 const path = require("path");
+const cookieParser = require("cookie-parser");
+const session = require('express-session');
 //Body parser middleware
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+
+app.use(session({
+  secret: 'process.env.secretkey', // Secret key to sign the session ID cookie
+  resave: false, // Forces the session to be saved back to the session store
+  saveUninitialized: false, // Forces a session that is "uninitialized" to be saved to the store
+  // Optional settings like cookie: { minAge: ... } can be added here
+  userId: 0,
+  tutorId: 0,
+  fullName: "",
+  isTutor: false
+}));
 
 
 // set the view engine to ejs

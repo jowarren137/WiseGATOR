@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N3SV9BXBFJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-N3SV9BXBFJ');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Register Form</title>
-    <link rel="stylesheet" type="text/css" href="../webpage/CSS/register-form.css"/>
-    <script src="./JS/login-form.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/navbar.css"/> <!-- For universal navbar -->
+    <link rel="stylesheet" type="text/css" href="../webpage/CSS/register-form.css"/> <!-- TO DO: Delete any navbar css -->
+    <script src="../webpage/JS/register-form.js" defer></script>
 </head>
 <body>
     <header class="navbar">
         <div class="left">
-            <img src="../webpage/tutor-pictures/GATORlogo.png" width="65" alt="Logo" class="Logo">
-            <a class="title" style="color: rgb(0, 0, 0);">wiseGATOR</a> 
+            <a href="/" class="home-link">
+                <img src="../webpage/tutor-pictures/GATORlogo.png" width="48" alt="Logo" class="Logo">
+                <span class="title" style="color: #efebef; padding-right: 10px; padding-left: 10px;">WiseGATOR</span>
+            </a>
         </div>
         <div class="search-container">
             <form class="search-form" action="/search-tutors" method="GET">
@@ -30,35 +42,49 @@
         </div>  
         <div class="right">
             <div class="navbar-buttons">
-                <a href="/"><button>Home</button></a>
                 <a href="/about-us/"><button>About Us</button></a>
-                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> -->
                 <a href="/tutor-application/"><button>Become a Tutor</button></a>
-                <a href="/login-form/"><button>Sign In</button></a>
+
+                <!-- TO DO: If logged in dashboard else login form -->
+                <!-- <a href="/dashboard/"><button>Dashboard</button></a> -->
+                <% if (loggedIn) { %>
+                    <a href="/dashboard/"><button>Dashboard</button></a>
+                    <form action="/users/logout/" method="post">
+                      <button type="submit">Logout</button>
+                    </form>
+                    <% } else { %>
+                      <a href="/login-form/"><button>Log In</button></a>
+                  <% } %>
+
+                <!-- <a href="/"><button>Home</button></a> FEATURE MOVED TO LOGO -->
+                <!-- <a href="/search-tutors/"><button>Search Tutors</button></a> FEATURE MOVED TO SEARCH BAR -->
             </div>
         </div>
     </header>
     <main class="content">
-        <form class="register-form" method="post">
+        <form class="register-form" method="post" action="/users/register/" enctype="application/x-www-form-urlencoded">
             <h1>Register</h1>
 
             <br><p>Items with an asterisk (*) are required</p></br>
             
             <label for="email">SFSU Email *</label> 
-            <input type="email" id="email" placeholder="e.g. 123456789@sfsu.edu"/>  <br>
+            <input type="email" id="email" name = "email" required placeholder="e.g. 123456789@sfsu.edu"/>  <br>
+
+            <label for="name">First and Last Name *</label> 
+            <input type="name" id="name" name = "name" required placeholder="First and Last Name"/> <br>
 
             <label for="password">Password *</label> 
-            <input type="password" id="password" placeholder="At least 8 characters"/> <br>
+            <input type="password" id="password" name = "password" required placeholder="At least 8 characters"/> <br>
 
             <label for="password-confirm">Re-enter Password *</label> 
-            <input type="password" id="password-confirm" placeholder=""/> <br>
+            <input type="password" id="password-confirm"  name = "password-confirm" required placeholder=""/> <br>
             
             <div class="terms">
-                <input type="checkbox" id="checkbox"/>
-                <label for="checkbox">I've read and accept the <a href="#">Terms of Services</a> *</label> <br>
+                <input type="checkbox" id="checkbox" name = "checkbox"/>
+                <label required for="checkbox">I've read and accept the <a href="#">Terms of Services</a> *</label> <br>
             </div>
 
-            <input type="submit" value="submit"/> <br>
+            <input type="submit" value="Submit"/> <br>
         </form>
     </main>
     <!-- Temp Error Handling (if individual messages wrap input and labe in div 'input-control')-->
